@@ -65,6 +65,87 @@ export default function Lab1() {
                     <li>A Court of Thorns and Roses</li>
                 </ul>
             </div>
+            <div id="wd-tables">
+                <h4>Table Tag</h4>
+                <table border={1} width="100%">
+                    <thead>
+                        <tr>
+                            <th align="center">Quiz</th>
+                            <th align="center">Topic</th>
+                            <th align="center">Date</th>
+                            <th align="center">Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td valign="middle" align="center">Q1</td>
+                            <td valign="middle" align="center">HTML</td>
+                            <td valign="middle" align="center">2/3/21</td>
+                            <td valign="middle" align="center">85</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q2</td>
+                            <td valign="middle" align="center">CSS</td>
+                            <td valign="middle" align="center">2/10/21</td>
+                            <td valign="middle" align="center">90</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q3</td>
+                            <td valign="middle" align="center">JavaScript</td>
+                            <td valign="middle" align="center">2/17/21</td>
+                            <td valign="middle" align="center">88</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q4</td>
+                            <td valign="middle" align="center">React</td>
+                            <td valign="middle" align="center">2/24/21</td>
+                            <td valign="middle" align="center">92</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q5</td>
+                            <td valign="middle" align="center">Node.js</td>
+                            <td valign="middle" align="center">3/3/21</td>
+                            <td valign="middle" align="center">87</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q6</td>
+                            <td valign="middle" align="center">Express</td>
+                            <td valign="middle" align="center">3/10/21</td>
+                            <td valign="middle" align="center">91</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q7</td>
+                            <td valign="middle" align="center">MongoDB</td>
+                            <td valign="middle" align="center">3/17/21</td>
+                            <td valign="middle" align="center">89</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q8</td>
+                            <td valign="middle" align="center">APIs</td>
+                            <td valign="middle" align="center">3/24/21</td>
+                            <td valign="middle" align="center">93</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q9</td>
+                            <td valign="middle" align="center">Authentication</td>
+                            <td valign="middle" align="center">3/31/21</td>
+                            <td valign="middle" align="center">86</td>
+                        </tr>
+                        <tr>
+                            <td valign="middle" align="center">Q10</td>
+                            <td valign="middle" align="center">Deployment</td>
+                            <td valign="middle" align="center">4/7/21</td>
+                            <td valign="middle" align="center">94</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td valign="middle" align="center" colSpan={3}>Average</td>
+                            <td valign="middle" align="center">90</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     )
 }
