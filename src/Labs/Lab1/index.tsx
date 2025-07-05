@@ -47,6 +47,23 @@ export default function Lab1() {
                     <li>Add paneer cubes and simmer for 5 minutes.</li>
                     <li>Garnish with fresh cilantro and serve with naan!</li>
                 </ol>
+                <h5>Unordered List Tag</h5>
+                My favorite books (in no particular order)
+                <ul id="wd-my-books">
+                    <li>Dune</li>
+                    <li>Lord of the Rings</li>
+                    <li>Ender's Game</li>
+                    <li>Red Mars</li>
+                    <li>The Forever War</li>
+                </ul>
+                Your favorite books (in no particular order)
+                <ul id="wd-your-books">
+                    <li>The Invisible Life of Addie LaRue</li>
+                    <li>Rebecca</li>
+                    <li>Mexican Gothic</li>
+                    <li>The Seven Husbands of Evelyn Hugo</li>
+                    <li>A Court of Thorns and Roses</li>
+                </ul>
             </div>
         </div>
     )
