@@ -22,6 +22,32 @@ export default function Lab1() {
                     This is the third paragraph. Wrap each paragraph with the paragraph tag to tell browsers to render the gaps.
                 </p>
             </div>
+            <div id="wd-lists">
+                <h4>List Tags</h4>
+                <h5>Ordered List Tag</h5>
+                How to make pancakes:
+                <ol id="wd-pancakes">
+                    <li>Mix dry ingredients.</li>
+                    <li>Add wet ingredients.</li>
+                    <li>Stir to combine.</li>
+                    <li>Heat a skillet or griddle.</li>
+                    <li>Pour batter onto the skillet.</li>
+                    <li>Cook until bubbly on top.</li>
+                    <li>Flip and cook the other side.</li>
+                    <li>Serve and enjoy!</li>
+                </ol>
+                My favorite recipe: Paneer Curry:
+                <ol id="wd-your-favorite-recipe">
+                    <li>Heat oil in a large pan over medium heat.</li>
+                    <li>Add cumin seeds and let them sizzle.</li>
+                    <li>Add chopped onions and sauté until golden brown.</li>
+                    <li>Add ginger-garlic paste and cook for 2 minutes.</li>
+                    <li>Add chopped tomatoes and cook until soft.</li>
+                    <li>Add turmeric, red chili powder, and garam masala.</li>
+                    <li>Add paneer cubes and simmer for 5 minutes.</li>
+                    <li>Garnish with fresh cilantro and serve with naan!</li>
+                </ol>
+            </div>
         </div>
     )
 }
