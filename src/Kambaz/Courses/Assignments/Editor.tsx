@@ -2,9 +2,9 @@ export default function AssignmentEditor() {
     return (
       <div id="wd-assignments-editor">
         <label htmlFor="wd-name">Assignment Name</label>
-        <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
+        <input id="wd-name" value="A1 - INTRO + HTML" /><br /><br />
         <textarea id="wd-description">
-          The assignment is available online Submit a link to the landing page of
+          Build a React.js user interface and format it using HTML. Submit a link to your landing page.
         </textarea>
         <br />
         <table>
@@ -70,7 +70,7 @@ export default function AssignmentEditor() {
               <label htmlFor="wd-due">Due</label>
             </td>
             <td>
-              <input id="wd-due" type="date" value="2024-05-13"/>
+              <input id="wd-due" type="date" value="2025-07-08"/>
             </td>
           </tr>
           <tr>
