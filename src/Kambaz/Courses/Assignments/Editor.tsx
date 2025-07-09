@@ -78,7 +78,7 @@ export default function AssignmentEditor() {
               <label htmlFor="wd-available-from">Available from</label>
             </td>
             <td>
-              <input id="wd-available-from" type="date" value="2024-05-06"/>
+              <input id="wd-available-from" type="date" value="2025-05-06"/>
             </td>
           </tr>
           <tr>
@@ -86,7 +86,7 @@ export default function AssignmentEditor() {
               <label htmlFor="wd-until">Until</label>
             </td>
             <td>
-              <input id="wd-until" type="date" value="2024-05-20"/>
+              <input id="wd-until" type="date" value="2025-05-20"/>
             </td>
           </tr>
           <td>
