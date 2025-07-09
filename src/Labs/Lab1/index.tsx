@@ -181,6 +181,12 @@ export default function Lab1() {
                         id="wd-all-good">
                         Hello World!
                     </button>
+                    &nbsp;
+                    <button type="button"
+                        onClick={() => alert("File Uploaded!")}
+                        id="wd-file-upload">
+                        Upload file
+                    </button>
                     <h5 id="wd-radio-buttons">Radio buttons</h5>
 
                     <label>Favorite movie genre:</label><br />
