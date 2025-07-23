@@ -1,1540 +1,1540 @@
 [
   {
     "_id": "M101",
-    "name": "Introduction to Rocket Propulsion",
-    "description": "Basic principles of rocket propulsion and rocket engines.",
+    "name": "Rocket Propulsion Overview",
+    "description": "Introduction to the core ideas behind rocket engines and propulsion systems.",
     "course": "RS101",
     "lessons": [
       {
         "_id": "L101",
-        "name": "History of Rocketry",
-        "description": "A brief history of rocketry and space exploration.",
+        "name": "Origins of Rocketry",
+        "description": "A look at the beginnings and evolution of rocket technology.",
         "module": "M101"
       },
       {
         "_id": "L102",
-        "name": "Rocket Propulsion Fundamentals",
-        "description": "Basic principles of rocket propulsion.",
+        "name": "Propulsion Basics",
+        "description": "Key concepts and physics of rocket propulsion.",
         "module": "M101"
       },
       {
         "_id": "L103",
-        "name": "Rocket Engine Types",
-        "description": "Overview of different types of rocket engines.",
+        "name": "Types of Rocket Engines",
+        "description": "Comparison of various rocket engine designs and their uses.",
         "module": "M101"
       }
     ]
   },
   {
     "_id": "M102",
-    "name": "Fuel and Combustion",
-    "description": "Understanding rocket fuel, combustion processes, and efficiency.",
+    "name": "Rocket Fuels and Combustion",
+    "description": "Exploring fuel types, combustion reactions, and efficiency in rockets.",
     "course": "RS101",
     "lessons": [
       {
         "_id": "L201",
-        "name": "Rocket Fuel",
-        "description": "Overview of different types of rocket fuels.",
+        "name": "Types of Rocket Fuels",
+        "description": "Survey of chemical and physical properties of rocket fuels.",
         "module": "M102"
       },
       {
         "_id": "L202",
-        "name": "Combustion Processes",
-        "description": "Understanding combustion processes and efficiency.",
+        "name": "Combustion Fundamentals",
+        "description": "How combustion works and its role in propulsion.",
         "module": "M102"
       },
       {
         "_id": "L203",
-        "name": "Combustion Instability",
-        "description": "Understanding combustion instability and mitigation.",
+        "name": "Instabilities in Combustion",
+        "description": "Understanding and addressing combustion instability in engines.",
         "module": "M102"
       }
     ]
   },
   {
     "_id": "M103",
-    "name": "Nozzle Design",
-    "description": "Principles of rocket nozzle design and performance optimization.",
+    "name": "Nozzle Engineering",
+    "description": "Design principles and performance factors for rocket nozzles.",
     "course": "RS101",
     "lessons": [
       {
         "_id": "L301",
-        "name": "Nozzle Design",
-        "description": "Overview of different types of rocket nozzles.",
+        "name": "Nozzle Varieties",
+        "description": "Different nozzle shapes and their applications.",
         "module": "M103"
       },
       {
         "_id": "L302",
-        "name": "Nozzle Performance",
-        "description": "Understanding nozzle performance and efficiency.",
+        "name": "Performance Metrics",
+        "description": "How nozzle design affects rocket efficiency.",
         "module": "M103"
       },
       {
         "_id": "L303",
-        "name": "Nozzle Optimization",
-        "description": "Optimizing nozzle design for specific applications.",
+        "name": "Optimizing Nozzles",
+        "description": "Strategies for improving nozzle performance for specific missions.",
         "module": "M103"
       }
     ]
   },
   {
     "_id": "M201",
-    "name": "Fundamentals of Aerodynamics",
-    "description": "Basic aerodynamic concepts and fluid dynamics principles.",
+    "name": "Aerodynamics Essentials",
+    "description": "Key aerodynamic theories and fluid dynamics for flight.",
     "course": "RS102",
     "lessons": [
       {
         "_id": "L401",
-        "name": "Introduction to Fluid Properties",
-        "description": "Understanding the basic properties of fluids.",
+        "name": "Fluid Properties",
+        "description": "Basic characteristics of fluids relevant to aerodynamics.",
         "module": "M201"
       },
       {
         "_id": "L402",
-        "name": "Bernoulli's Principle",
-        "description": "Exploration of Bernoulli's principle and its applications.",
+        "name": "Bernoulli's Law",
+        "description": "How Bernoulli's principle explains lift and pressure.",
         "module": "M201"
       },
       {
         "_id": "L403",
-        "name": "Continuity Equation",
-        "description": "Understanding the continuity equation and its implications.",
+        "name": "The Continuity Principle",
+        "description": "The role of the continuity equation in fluid flow.",
         "module": "M201"
       }
     ]
   },
   {
     "_id": "M202",
-    "name": "Subsonic and Supersonic Flow",
-    "description": "Understanding subsonic and supersonic aerodynamic behaviors.",
+    "name": "Subsonic and Supersonic Aerodynamics",
+    "description": "Differences in airflow and design for subsonic and supersonic speeds.",
     "course": "RS102",
     "lessons": [
       {
         "_id": "L404",
-        "name": "Subsonic Flow Analysis",
-        "description": "Exploration of subsonic flow characteristics.",
+        "name": "Subsonic Flow",
+        "description": "Characteristics and analysis of subsonic air movement.",
         "module": "M202"
       },
       {
         "_id": "L405",
-        "name": "Supersonic Flow Dynamics",
-        "description": "Understanding the principles of supersonic flow.",
+        "name": "Supersonic Flow",
+        "description": "Principles and effects of supersonic flight.",
         "module": "M202"
       },
       {
         "_id": "L406",
-        "name": "Shock Waves",
-        "description": "Study of shock waves and their effects on aircraft design.",
+        "name": "Shock Wave Phenomena",
+        "description": "How shock waves form and influence aircraft design.",
         "module": "M202"
       }
     ]
   },
   {
     "_id": "M203",
-    "name": "Aerodynamic Heating",
-    "description": "Study of aerodynamic heating and thermal protection systems.",
+    "name": "Thermal Effects in Aerodynamics",
+    "description": "Study of heat transfer and protection in high-speed flight.",
     "course": "RS102",
     "lessons": [
       {
         "_id": "L407",
-        "name": "Heat Transfer Mechanisms",
-        "description": "Understanding conduction, convection, and radiation.",
+        "name": "Heat Transfer Basics",
+        "description": "Conduction, convection, and radiation in aerospace contexts.",
         "module": "M203"
       },
       {
         "_id": "L408",
-        "name": "Thermal Protection Systems",
-        "description": "Overview of thermal protection systems used in aerospace.",
+        "name": "Thermal Protection Methods",
+        "description": "Materials and systems for protecting vehicles from heat.",
         "module": "M203"
       },
       {
         "_id": "L409",
-        "name": "Aerodynamic Heating Calculations",
-        "description": "Calculating heating rates during atmospheric re-entry.",
+        "name": "Calculating Aerodynamic Heating",
+        "description": "Methods for estimating heat loads during re-entry.",
         "module": "M203"
       }
     ]
   },
   {
     "_id": "M301",
-    "name": "Spacecraft Structural Design",
-    "description": "Fundamentals of designing spacecraft structures and materials selection.",
+    "name": "Spacecraft Structure Design",
+    "description": "Core ideas in building spacecraft and choosing materials.",
     "course": "RS103",
     "lessons": [
       {
         "_id": "L501",
-        "name": "Materials for Spacecraft",
-        "description": "Overview of materials used in spacecraft construction.",
+        "name": "Materials Selection",
+        "description": "Choosing the right materials for space missions.",
         "module": "M301"
       },
       {
         "_id": "L502",
-        "name": "Structural Analysis",
-        "description": "Fundamentals of structural analysis for spacecraft.",
+        "name": "Structural Analysis Basics",
+        "description": "How to analyze spacecraft structures for strength and safety.",
         "module": "M301"
       },
       {
         "_id": "L503",
-        "name": "Design Considerations",
-        "description": "Key considerations in spacecraft structural design.",
+        "name": "Design Priorities",
+        "description": "Important factors in spacecraft structural design.",
         "module": "M301"
       }
     ]
   },
   {
     "_id": "M302",
-    "name": "Orbital Mechanics",
-    "description": "Understanding orbital dynamics and mission planning.",
+    "name": "Orbital Motion and Planning",
+    "description": "Principles of orbits and how to plan space missions.",
     "course": "RS103",
     "lessons": [
       {
         "_id": "L504",
-        "name": "Kepler's Laws",
-        "description": "Study of Kepler's laws of planetary motion.",
+        "name": "Kepler's Motion Laws",
+        "description": "Understanding planetary motion and orbits.",
         "module": "M302"
       },
       {
         "_id": "L505",
-        "name": "Orbital Transfers",
-        "description": "Understanding different types of orbital transfers.",
+        "name": "Transferring Orbits",
+        "description": "How spacecraft move between orbits.",
         "module": "M302"
       },
       {
         "_id": "L506",
-        "name": "Mission Planning",
-        "description": "Principles of planning missions using orbital mechanics.",
+        "name": "Mission Design",
+        "description": "Steps in planning a space mission using orbital mechanics.",
         "module": "M302"
       }
     ]
   },
   {
     "_id": "M303",
-    "name": "Spacecraft Systems Engineering",
-    "description": "Overview of spacecraft systems and subsystems engineering.",
+    "name": "Spacecraft Systems Overview",
+    "description": "Introduction to the engineering of spacecraft systems and subsystems.",
     "course": "RS103",
     "lessons": [
       {
         "_id": "L507",
-        "name": "Systems Engineering Process",
-        "description": "Introduction to the systems engineering process for spacecraft.",
+        "name": "Systems Engineering Steps",
+        "description": "The process of developing spacecraft systems.",
         "module": "M303"
       },
       {
         "_id": "L508",
-        "name": "Subsystem Integration",
-        "description": "Understanding how different subsystems integrate in spacecraft.",
+        "name": "Subsystem Coordination",
+        "description": "How different spacecraft subsystems work together.",
         "module": "M303"
       },
       {
         "_id": "L509",
-        "name": "Testing and Validation",
-        "description": "Approaches to testing and validating spacecraft systems.",
+        "name": "Testing and Verification",
+        "description": "Approaches to ensuring spacecraft systems work as intended.",
         "module": "M303"
       }
     ]
   },
   {
     "_id": "M401",
-    "name": "Introduction to Organic Chemistry",
-    "description": "Basic concepts of organic chemistry, including functional groups and reactions.",
+    "name": "Organic Chemistry Foundations",
+    "description": "Essential ideas in organic chemistry, including functional groups and reaction types.",
     "course": "RS104",
     "lessons": [
       {
         "_id": "L601",
-        "name": "Functional Groups",
-        "description": "Overview of major functional groups in organic compounds.",
+        "name": "Key Functional Groups",
+        "description": "Survey of important functional groups in organic molecules.",
         "module": "M401"
       },
       {
         "_id": "L602",
-        "name": "Types of Organic Reactions",
-        "description": "Introduction to common types of organic reactions.",
+        "name": "Organic Reaction Types",
+        "description": "Introduction to the main categories of organic reactions.",
         "module": "M401"
       },
       {
         "_id": "L603",
-        "name": "Stereochemistry",
-        "description": "Understanding stereochemical concepts in organic chemistry.",
+        "name": "Stereochemistry Principles",
+        "description": "Understanding the spatial arrangement of atoms in organic compounds.",
         "module": "M401"
       }
     ]
   },
   {
     "_id": "M402",
-    "name": "Organic Synthesis Techniques",
-    "description": "Study of various techniques used in organic synthesis.",
+    "name": "Techniques in Organic Synthesis",
+    "description": "Overview of laboratory methods for synthesizing and analyzing organic compounds.",
     "course": "RS104",
     "lessons": [
       {
         "_id": "L604",
-        "name": "Recrystallization",
-        "description": "Techniques for purifying organic compounds via recrystallization.",
+        "name": "Purification by Recrystallization",
+        "description": "How to purify organic substances using recrystallization.",
         "module": "M402"
       },
       {
         "_id": "L605",
-        "name": "Chromatography",
-        "description": "Overview of chromatography methods for separation.",
+        "name": "Separation with Chromatography",
+        "description": "Techniques for separating mixtures using chromatography.",
         "module": "M402"
       },
       {
         "_id": "L606",
-        "name": "Spectroscopy Techniques",
-        "description": "Introduction to spectroscopic methods for structure determination.",
+        "name": "Spectroscopy in Structure Analysis",
+        "description": "Using spectroscopic tools to determine molecular structures.",
         "module": "M402"
       }
     ]
   },
   {
     "_id": "M403",
-    "name": "Applications of Organic Chemistry",
-    "description": "Exploration of the role of organic chemistry in various fields.",
+    "name": "Organic Chemistry in Practice",
+    "description": "Real-world uses of organic chemistry in medicine, environment, and agriculture.",
     "course": "RS104",
     "lessons": [
       {
         "_id": "L607",
-        "name": "Organic Chemistry in Medicine",
-        "description": "Role of organic compounds in pharmaceuticals.",
+        "name": "Pharmaceutical Applications",
+        "description": "How organic compounds are used in drug development and healthcare.",
         "module": "M403"
       },
       {
         "_id": "L608",
-        "name": "Environmental Organic Chemistry",
-        "description": "Study of organic pollutants and their effects on the environment.",
+        "name": "Environmental Impact of Organics",
+        "description": "Study of organic pollutants and their environmental effects.",
         "module": "M403"
       },
       {
         "_id": "L609",
-        "name": "Organic Chemistry in Agriculture",
-        "description": "Application of organic compounds in agricultural practices.",
+        "name": "Organics in Agriculture",
+        "description": "The role of organic chemistry in modern agricultural practices.",
         "module": "M403"
       }
     ]
   },
   {
     "_id": "M501",
-    "name": "Introduction to Inorganic Chemistry",
-    "description": "Basic principles and concepts of inorganic chemistry.",
+    "name": "Inorganic Chemistry Principles",
+    "description": "Core ideas and concepts in inorganic chemistry, including bonding and coordination.",
     "course": "RS105",
     "lessons": [
       {
         "_id": "L610",
-        "name": "Periodic Table and Trends",
-        "description": "Understanding the periodic table and periodic trends.",
+        "name": "Periodic Trends and Elements",
+        "description": "Exploring the periodic table and trends among elements.",
         "module": "M501"
       },
       {
         "_id": "L611",
-        "name": "Chemical Bonding",
-        "description": "Overview of different types of chemical bonding.",
+        "name": "Types of Chemical Bonds",
+        "description": "Overview of ionic, covalent, and metallic bonding.",
         "module": "M501"
       },
       {
         "_id": "L612",
-        "name": "Coordination Compounds",
-        "description": "Introduction to coordination chemistry and complex ions.",
+        "name": "Coordination Chemistry Basics",
+        "description": "Introduction to coordination compounds and their properties.",
         "module": "M501"
       }
     ]
   },
   {
     "_id": "M502",
-    "name": "Inorganic Reaction Mechanisms",
-    "description": "Study of mechanisms of inorganic reactions.",
+    "name": "Mechanisms in Inorganic Chemistry",
+    "description": "Study of how inorganic reactions occur and their underlying mechanisms.",
     "course": "RS105",
     "lessons": [
       {
         "_id": "L613",
-        "name": "Mechanisms of Coordination Reactions",
-        "description": "Understanding mechanisms in coordination chemistry.",
+        "name": "Coordination Reaction Pathways",
+        "description": "How reactions proceed in coordination chemistry.",
         "module": "M502"
       },
       {
         "_id": "L614",
-        "name": "Redox Reactions",
-        "description": "Overview of redox reactions in inorganic chemistry.",
+        "name": "Redox Chemistry",
+        "description": "Understanding oxidation-reduction processes in inorganic systems.",
         "module": "M502"
       },
       {
         "_id": "L615",
-        "name": "Inorganic Synthesis Techniques",
-        "description": "Techniques for synthesizing inorganic compounds.",
+        "name": "Synthesizing Inorganic Compounds",
+        "description": "Laboratory techniques for making inorganic substances.",
         "module": "M502"
       }
     ]
   },
   {
     "_id": "M503",
-    "name": "Applications of Inorganic Chemistry",
-    "description": "Exploration of the role of inorganic chemistry in various fields.",
+    "name": "Inorganic Chemistry in Application",
+    "description": "Practical uses of inorganic chemistry in industry, biology, and materials science.",
     "course": "RS105",
     "lessons": [
       {
         "_id": "L616",
-        "name": "Inorganic Chemistry in Industry",
-        "description": "Applications of inorganic compounds in industrial processes.",
+        "name": "Industrial Inorganic Chemistry",
+        "description": "How inorganic compounds are used in manufacturing and industry.",
         "module": "M503"
       },
       {
         "_id": "L617",
-        "name": "Bioinorganic Chemistry",
-        "description": "Study of the role of metals in biological systems.",
+        "name": "Metals in Biology",
+        "description": "The role of metals and inorganic elements in living systems.",
         "module": "M503"
       },
       {
         "_id": "L618",
-        "name": "Inorganic Chemistry in Materials Science",
-        "description": "Application of inorganic compounds in materials science.",
+        "name": "Materials Science Applications",
+        "description": "How inorganic chemistry contributes to new materials and technologies.",
         "module": "M503"
       }
     ]
   },
   {
     "_id": "M601",
-    "name": "Principles of Physical Chemistry",
-    "description": "Basic concepts of physical chemistry and its principles.",
+    "name": "Physical Chemistry Fundamentals",
+    "description": "Key principles and concepts in physical chemistry, including thermodynamics and quantum theory.",
     "course": "RS106",
     "lessons": [
       {
         "_id": "L619",
-        "name": "Thermodynamics",
-        "description": "Understanding the laws of thermodynamics.",
+        "name": "Thermodynamics Essentials",
+        "description": "Exploring the laws and applications of thermodynamics in chemistry.",
         "module": "M601"
       },
       {
         "_id": "L620",
-        "name": "Chemical Kinetics",
-        "description": "Study of the rates of chemical reactions.",
+        "name": "Chemical Kinetics Overview",
+        "description": "Understanding how and why chemical reactions proceed at different rates.",
         "module": "M601"
       },
       {
         "_id": "L621",
-        "name": "Quantum Chemistry",
-        "description": "Introduction to quantum mechanics in chemistry.",
+        "name": "Introduction to Quantum Chemistry",
+        "description": "Basic quantum mechanics concepts as applied to chemical systems.",
         "module": "M601"
       }
     ]
   },
   {
     "_id": "M602",
-    "name": "Applications of Physical Chemistry",
-    "description": "Exploration of physical chemistry applications in various fields.",
+    "name": "Physical Chemistry in Action",
+    "description": "Applications of physical chemistry in engineering, industry, and research.",
     "course": "RS106",
     "lessons": [
       {
         "_id": "L622",
-        "name": "Thermodynamics in Engineering",
-        "description": "Application of thermodynamics in engineering fields.",
+        "name": "Engineering Thermodynamics",
+        "description": "How thermodynamics is used in various engineering fields.",
         "module": "M602"
       },
       {
         "_id": "L623",
-        "name": "Kinetics in Industrial Processes",
-        "description": "Role of kinetics in industrial chemical processes.",
+        "name": "Industrial Kinetics",
+        "description": "The role of reaction rates in industrial chemical processes.",
         "module": "M602"
       },
       {
         "_id": "L624",
-        "name": "Spectroscopic Techniques",
-        "description": "Overview of spectroscopic methods and their applications.",
+        "name": "Spectroscopy Applications",
+        "description": "Practical uses of spectroscopic techniques in science and industry.",
         "module": "M602"
       }
     ]
   },
   {
     "_id": "M603",
-    "name": "Experimental Physical Chemistry",
-    "description": "Hands-on laboratory techniques in physical chemistry.",
+    "name": "Experimental Methods in Physical Chemistry",
+    "description": "Hands-on laboratory techniques and experiments in physical chemistry.",
     "course": "RS106",
     "lessons": [
       {
         "_id": "L625",
-        "name": "Calorimetry Experiments",
-        "description": "Conducting experiments to measure heat transfer.",
+        "name": "Calorimetry Techniques",
+        "description": "Measuring heat changes in chemical reactions using calorimetry.",
         "module": "M603"
       },
       {
         "_id": "L626",
-        "name": "Kinetics Experiments",
-        "description": "Performing experiments to study reaction rates.",
+        "name": "Kinetics Lab Experiments",
+        "description": "Experimental approaches to studying reaction rates.",
         "module": "M603"
       },
       {
         "_id": "L627",
-        "name": "Spectroscopy Experiments",
-        "description": "Hands-on experience with spectroscopic techniques.",
+        "name": "Spectroscopy Lab Work",
+        "description": "Practical experience with spectroscopic analysis in the lab.",
         "module": "M603"
       }
     ]
   },
   {
     "_id": "M701",
-    "name": "Languages of Middle-earth",
-    "description": "Introduction to ancient languages and scripts of Middle-earth.",
+    "name": "Languages of Middle-earth: An Introduction",
+    "description": "A survey of the ancient languages and scripts found in Middle-earth, their origins, and cultural significance.",
     "course": "RS107",
     "lessons": [
       {
         "_id": "L628",
-        "name": "Sindarin Language Basics",
-        "description": "Introduction to the Sindarin language.",
+        "name": "Basics of Sindarin",
+        "description": "Introduction to the Sindarin language, its structure, and usage.",
         "module": "M701"
       },
       {
         "_id": "L629",
-        "name": "Quenya Language Fundamentals",
-        "description": "Overview of the Quenya language.",
+        "name": "Foundations of Quenya",
+        "description": "Overview of the Quenya language and its role in Elvish culture.",
         "module": "M701"
       },
       {
         "_id": "L630",
-        "name": "Dwarvish Language Overview",
-        "description": "Introduction to the Khuzdul language.",
+        "name": "Dwarvish Language Essentials",
+        "description": "Introduction to Khuzdul, the language of the Dwarves, and its unique features.",
         "module": "M701"
       }
     ]
   },
   {
     "_id": "M702",
-    "name": "Linguistic Structures",
-    "description": "Exploration of linguistic structures in Middle-earth languages.",
+    "name": "Linguistic Structures of Middle-earth",
+    "description": "Exploring the grammar, phonetics, and semantics of Middle-earth languages.",
     "course": "RS107",
     "lessons": [
       {
         "_id": "L631",
-        "name": "Syntax and Grammar",
-        "description": "Understanding syntax and grammatical rules.",
+        "name": "Syntax and Grammar Rules",
+        "description": "Understanding the grammatical frameworks of constructed languages.",
         "module": "M702"
       },
       {
         "_id": "L632",
-        "name": "Phonetics and Phonology",
-        "description": "Study of sounds and their patterns in languages.",
+        "name": "Phonetics and Sound Patterns",
+        "description": "Study of the sound systems and pronunciation in Middle-earth languages.",
         "module": "M702"
       },
       {
         "_id": "L633",
-        "name": "Semantics and Pragmatics",
-        "description": "Overview of meaning in language use.",
+        "name": "Semantics and Meaning",
+        "description": "How meaning is constructed and interpreted in these languages.",
         "module": "M702"
       }
     ]
   },
   {
     "_id": "M703",
-    "name": "Literature and Culture",
-    "description": "Exploration of literature and cultural aspects of Middle-earth.",
+    "name": "Culture and Literature of Middle-earth",
+    "description": "Examining the literary works and cultural traditions tied to Middle-earth languages.",
     "course": "RS107",
     "lessons": [
       {
         "_id": "L634",
-        "name": "Epic Poetry in Middle-earth",
-        "description": "Study of epic poetry and its significance.",
+        "name": "Epic Poetry and Storytelling",
+        "description": "The role of epic poetry in preserving history and culture.",
         "module": "M703"
       },
       {
         "_id": "L635",
-        "name": "Folklore and Mythology",
-        "description": "Exploration of myths and folklore in Middle-earth.",
+        "name": "Folklore and Mythic Narratives",
+        "description": "Exploring myths and legends that shape Middle-earth societies.",
         "module": "M703"
       },
       {
         "_id": "L636",
-        "name": "Cultural Significance of Languages",
-        "description": "Understanding the cultural impact of languages.",
+        "name": "Language and Cultural Identity",
+        "description": "How language influences and reflects cultural identity in Middle-earth.",
         "module": "M703"
       }
     ]
   },
   {
     "_id": "M801",
-    "name": "Fundamentals of Electrical Engineering",
-    "description": "Basic concepts of electrical engineering and circuit analysis.",
+    "name": "Electrical Engineering Basics",
+    "description": "Fundamental concepts in electrical engineering, including circuits and analysis techniques.",
     "course": "RS108",
     "lessons": [
       {
         "_id": "L637",
-        "name": "Ohm's Law",
-        "description": "Introduction to Ohm's Law and basic circuit elements.",
+        "name": "Understanding Ohm's Law",
+        "description": "Introduction to Ohm's Law and its application in circuits.",
         "module": "M801"
       },
       {
         "_id": "L638",
-        "name": "AC and DC Circuits",
-        "description": "Overview of alternating and direct current circuits.",
+        "name": "AC vs DC Circuits",
+        "description": "Comparison of alternating and direct current circuits and their uses.",
         "module": "M801"
       },
       {
         "_id": "L639",
-        "name": "Circuit Theorems",
-        "description": "Study of circuit theorems and their applications.",
+        "name": "Circuit Theorem Applications",
+        "description": "Exploring key theorems used in circuit analysis and design.",
         "module": "M801"
       }
     ]
   },
   {
     "_id": "M802",
-    "name": "Electronics Fundamentals",
-    "description": "Basic principles of electronics and semiconductor devices.",
+    "name": "Introduction to Electronics",
+    "description": "Core principles of electronics, focusing on semiconductors and digital logic.",
     "course": "RS108",
     "lessons": [
       {
         "_id": "L640",
-        "name": "Diodes and Transistors",
-        "description": "Overview of diodes and transistors in circuits.",
+        "name": "Diodes and Transistor Fundamentals",
+        "description": "How diodes and transistors function in electronic circuits.",
         "module": "M802"
       },
       {
         "_id": "L641",
-        "name": "Operational Amplifiers",
-        "description": "Understanding operational amplifiers and their applications.",
+        "name": "Operational Amplifier Uses",
+        "description": "Applications and characteristics of operational amplifiers.",
         "module": "M802"
       },
       {
         "_id": "L642",
-        "name": "Digital Logic Circuits",
-        "description": "Introduction to digital logic circuits and Boolean algebra.",
+        "name": "Digital Logic and Boolean Algebra",
+        "description": "Basics of digital logic circuits and Boolean operations.",
         "module": "M802"
       }
     ]
   },
   {
     "_id": "M803",
-    "name": "Applications of Electrical Engineering",
-    "description": "Exploration of electrical engineering applications in various fields.",
+    "name": "Electrical Engineering in Practice",
+    "description": "Real-world applications of electrical engineering in power, energy, and control systems.",
     "course": "RS108",
     "lessons": [
       {
         "_id": "L643",
-        "name": "Power Systems",
-        "description": "Overview of electrical power systems and grid management.",
+        "name": "Power System Fundamentals",
+        "description": "Overview of how electrical power systems are structured and managed.",
         "module": "M803"
       },
       {
         "_id": "L644",
-        "name": "Renewable Energy Systems",
-        "description": "Introduction to renewable energy technologies.",
+        "name": "Renewable Energy Technologies",
+        "description": "Introduction to renewable energy sources and their integration into the grid.",
         "module": "M803"
       },
       {
         "_id": "L645",
-        "name": "Control Systems",
-        "description": "Understanding control systems and their applications.",
+        "name": "Control System Applications",
+        "description": "How control systems are used in automation and industry.",
         "module": "M803"
       }
     ]
   },
   {
     "_id": "M901",
-    "name": "Introduction to Computer Science",
-    "description": "Basic concepts of computer science and programming.",
+    "name": "Foundations of Computer Science",
+    "description": "Introduction to core computer science concepts, programming, and system architecture.",
     "course": "RS109",
     "lessons": [
       {
         "_id": "L646",
-        "name": "Programming Fundamentals",
-        "description": "Introduction to programming concepts and languages.",
+        "name": "Programming Concepts",
+        "description": "Fundamental ideas and languages used in programming.",
         "module": "M901"
       },
       {
         "_id": "L647",
-        "name": "Data Structures",
-        "description": "Overview of basic data structures and algorithms.",
+        "name": "Data Structures Overview",
+        "description": "Introduction to basic data structures and their uses in algorithms.",
         "module": "M901"
       },
       {
         "_id": "L648",
-        "name": "Computer Architecture",
-        "description": "Understanding basic components of computer systems.",
+        "name": "Computer System Architecture",
+        "description": "Understanding the main components and organization of computer systems.",
         "module": "M901"
       }
     ]
   },
   {
     "_id": "M902",
-    "name": "Software Development",
-    "description": "Principles of software development and project management.",
+    "name": "Software Development Principles",
+    "description": "Key ideas in software development, project management, and agile methodologies.",
     "course": "RS109",
     "lessons": [
       {
         "_id": "L649",
-        "name": "Software Development Life Cycle",
-        "description": "Understanding the software development life cycle.",
+        "name": "Software Lifecycle Stages",
+        "description": "The phases of software development from planning to deployment.",
         "module": "M902"
       },
       {
         "_id": "L650",
-        "name": "Agile Methodologies",
-        "description": "Overview of Agile methodologies in software development.",
+        "name": "Agile Project Management",
+        "description": "Principles and practices of agile methodologies in software projects.",
         "module": "M902"
       },
       {
         "_id": "L651",
-        "name": "Testing and Debugging",
-        "description": "Introduction to software testing and debugging techniques.",
+        "name": "Testing and Debugging Techniques",
+        "description": "Approaches to ensuring software quality and fixing issues.",
         "module": "M902"
       }
     ]
   },
   {
     "_id": "M903",
-    "name": "Applications of Computer Science",
-    "description": "Exploration of computer science applications in various fields.",
+    "name": "Applied Computer Science",
+    "description": "Exploring real-world applications of computer science in data, AI, and web development.",
     "course": "RS109",
     "lessons": [
       {
         "_id": "L652",
-        "name": "Data Science Applications",
-        "description": "Understanding applications of data science.",
+        "name": "Data Science in Practice",
+        "description": "How data science is used to extract insights and drive decisions.",
         "module": "M903"
       },
       {
         "_id": "L653",
-        "name": "Artificial Intelligence Basics",
-        "description": "Introduction to basic concepts in artificial intelligence.",
+        "name": "Artificial Intelligence Fundamentals",
+        "description": "Introduction to AI concepts and their practical uses.",
         "module": "M903"
       },
       {
         "_id": "L654",
-        "name": "Web Development",
-        "description": "Overview of web development technologies and practices.",
+        "name": "Modern Web Development",
+        "description": "Overview of technologies and best practices in web development.",
         "module": "M903"
       }
     ]
   },
   {
     "_id": "M1001",
-    "name": "Introduction to Robotics",
-    "description": "Basic principles of robotics and automation.",
+    "name": "Robotics Fundamentals",
+    "description": "Introduction to the basics of robotics, including history, kinematics, and sensors.",
     "course": "RS110",
     "lessons": [
       {
         "_id": "L655",
-        "name": "History of Robotics",
-        "description": "Overview of the development of robotics technology.",
+        "name": "History of Robotics Technology",
+        "description": "A look at the development and milestones in robotics.",
         "module": "M1001"
       },
       {
         "_id": "L656",
-        "name": "Robot Kinematics",
-        "description": "Understanding the kinematics of robotic systems.",
+        "name": "Robot Kinematics Essentials",
+        "description": "Understanding the movement and mechanics of robotic systems.",
         "module": "M1001"
       },
       {
         "_id": "L657",
-        "name": "Sensors and Actuators",
-        "description": "Introduction to sensors and actuators in robotics.",
+        "name": "Sensors and Actuators in Robotics",
+        "description": "Introduction to the devices that allow robots to sense and interact with their environment.",
         "module": "M1001"
       }
     ]
   },
   {
     "_id": "M1002",
-    "name": "Robotic Programming",
-    "description": "Principles of programming robotic systems.",
+    "name": "Programming for Robotics",
+    "description": "Principles and languages used in programming robotic systems.",
     "course": "RS110",
     "lessons": [
       {
         "_id": "L658",
-        "name": "Programming Languages for Robotics",
-        "description": "Overview of programming languages used in robotics.",
+        "name": "Robotics Programming Languages",
+        "description": "Overview of the main languages used to program robots.",
         "module": "M1002"
       },
       {
         "_id": "L659",
-        "name": "Robot Operating Systems",
-        "description": "Understanding different operating systems for robots.",
+        "name": "Robot Operating Systems Overview",
+        "description": "Understanding the software platforms that control robots.",
         "module": "M1002"
       },
       {
         "_id": "L660",
-        "name": "Robot Control Algorithms",
-        "description": "Introduction to control algorithms for robots.",
+        "name": "Control Algorithms for Robots",
+        "description": "Introduction to the algorithms that govern robot behavior.",
         "module": "M1002"
       }
     ]
   },
   {
     "_id": "M1003",
-    "name": "Applications of Robotics",
-    "description": "Exploration of applications of robotics in various fields.",
+    "name": "Robotics in the Real World",
+    "description": "Applications of robotics in industry, medicine, and space exploration.",
     "course": "RS110",
     "lessons": [
       {
         "_id": "L661",
-        "name": "Robotics in Industry",
-        "description": "Understanding the role of robotics in industrial automation.",
+        "name": "Industrial Robotics Applications",
+        "description": "How robots are used to automate and improve industrial processes.",
         "module": "M1003"
       },
       {
         "_id": "L662",
-        "name": "Medical Robotics",
-        "description": "Overview of applications of robotics in medicine.",
+        "name": "Medical Robotics Innovations",
+        "description": "Exploring the use of robotics in healthcare and surgery.",
         "module": "M1003"
       },
       {
         "_id": "L663",
-        "name": "Robotics in Space Exploration",
-        "description": "Study of robotic applications in space missions.",
+        "name": "Robotics in Space Missions",
+        "description": "The role of robots in exploring and working in space.",
         "module": "M1003"
       }
     ]
   },
   {
     "_id": "M1101",
-    "name": "Philosophical Foundations of Liberation",
-    "description": "Examines key philosophical texts and theories surrounding independence movements.",
+    "name": "Core Principles of Independence Movements",
+    "description": "Analysis of foundational concepts and ideologies that drove independence movements globally.",
     "course": "RS111",
     "lessons": [
       {
         "_id": "L670",
-        "name": "Enlightenment Thinkers",
-        "description": "Study of Enlightenment philosophers and their influence on liberation movements."
+        "name": "Revolutionary Philosophers",
+        "description": "Examining key philosophical works that shaped revolutionary thinking."
       },
       {
-        "_id": "L671",
-        "name": "Nationalism and Identity",
-        "description": "Exploration of nationalism as a catalyst for independence."
+        "_id": "L671", 
+        "name": "Identity and Self-Determination",
+        "description": "Understanding how national identity influences independence struggles."
       },
       {
         "_id": "L672",
-        "name": "Case Studies in Latin America",
-        "description": "Detailed analysis of key independence movements in Latin America."
+        "name": "South American Independence",
+        "description": "Examining major independence movements across South America."
       }
     ]
   },
   {
     "_id": "M1102",
-    "name": "Historical Context of Liberation",
-    "description": "Focuses on historical events that shaped independence movements.",
+    "name": "Origins of Independence Movements",
+    "description": "Study of critical historical events and conditions leading to independence movements.",
     "course": "RS111",
     "lessons": [
       {
         "_id": "L673",
-        "name": "Colonial Legacy",
-        "description": "Examining the impact of colonialism on independence movements."
+        "name": "Effects of Colonial Rule",
+        "description": "Understanding how colonial systems influenced independence struggles."
       },
       {
         "_id": "L674",
-        "name": "Major Figures in Latin America",
-        "description": "Study of influential leaders in Latin American independence."
+        "name": "Revolutionary Leaders of South America",
+        "description": "Profiles of key figures who shaped South American independence."
       },
       {
         "_id": "L675",
-        "name": "Comparative Independence Movements",
-        "description": "Analysis of different independence movements globally."
+        "name": "Global Independence Struggles",
+        "description": "Comparing independence movements across different regions and eras."
       }
     ]
   },
   {
     "_id": "M1103",
-    "name": "Modern Implications of Liberation Philosophy",
-    "description": "Explores contemporary issues related to liberation and independence.",
+    "name": "Contemporary Independence Movements",
+    "description": "Analysis of modern independence and autonomy movements worldwide.",
     "course": "RS111",
     "lessons": [
       {
         "_id": "L676",
-        "name": "Current Independence Movements",
-        "description": "Examining modern struggles for independence around the world."
+        "name": "Modern Self-Determination",
+        "description": "Study of ongoing independence movements in today's world."
       },
       {
         "_id": "L677",
-        "name": "Philosophy and Political Action",
-        "description": "How philosophical ideas shape political action today."
+        "name": "Theory into Practice",
+        "description": "Examining how independence theories translate to political movements."
       },
       {
         "_id": "L678",
-        "name": "Reflections on Freedom",
-        "description": "Critical discussions on the meaning of freedom in modern society."
+        "name": "Modern Liberty",
+        "description": "Exploring contemporary interpretations of independence and freedom."
       }
     ]
   },
   {
     "_id": "M1104",
-    "name": "Innovative Educational Theories",
-    "description": "Focuses on significant educational theories from the early 19th century.",
+    "name": "Evolution of Educational Theory",
+    "description": "Examination of transformative educational concepts from the 1800s.",
     "course": "RS112",
     "lessons": [
       {
         "_id": "L679",
-        "name": "Key Educational Reformers",
-        "description": "Study of influential figures and their impact on education."
+        "name": "Pioneers of Education",
+        "description": "Analysis of revolutionary educators and their methodologies."
       },
       {
         "_id": "L680",
-        "name": "Pedagogical Innovations",
-        "description": "Exploration of innovative teaching methods from the 19th century."
+        "name": "Teaching Breakthroughs",
+        "description": "Study of groundbreaking educational approaches from the period."
       },
       {
         "_id": "L681",
-        "name": "Education and Social Change",
-        "description": "Analyzing how education has driven social change throughout history."
+        "name": "Educational Impact",
+        "description": "Examining education's role in transforming society."
       }
     ]
   },
   {
     "_id": "M1105",
-    "name": "Challenges in 19th Century Education",
-    "description": "Explores the challenges faced by educational reformers.",
+    "name": "Educational Reform Obstacles",
+    "description": "Analysis of barriers faced in implementing educational changes.",
     "course": "RS112",
     "lessons": [
       {
         "_id": "L682",
-        "name": "Opposition to Reform",
-        "description": "Understanding the resistance to educational reform movements."
+        "name": "Reform Resistance",
+        "description": "Study of historical opposition to educational changes."
       },
       {
         "_id": "L683",
-        "name": "Societal Expectations",
-        "description": "The role of societal expectations in shaping education."
+        "name": "Social Influences",
+        "description": "Analysis of social factors affecting educational development."
       },
       {
         "_id": "L684",
-        "name": "Legacy of Reformers",
-        "description": "Impact of early reformers on contemporary education."
+        "name": "Historical Impact",
+        "description": "Examining how past reforms shape modern education."
       }
     ]
   },
   {
     "_id": "M1106",
-    "name": "Evaluating Modern Educational Practices",
-    "description": "Analyzes the effectiveness of current educational practices.",
+    "name": "Current Educational Assessment",
+    "description": "Critical review of present-day teaching methods and outcomes.",
     "course": "RS112",
     "lessons": [
       {
         "_id": "L685",
-        "name": "Contemporary Teaching Methods",
-        "description": "Study of modern teaching strategies in education."
+        "name": "Modern Pedagogy",
+        "description": "Analysis of current educational approaches and methods."
       },
       {
         "_id": "L686",
-        "name": "Impact of Technology",
-        "description": "How technology influences contemporary education."
+        "name": "Digital Learning",
+        "description": "Exploring technological integration in education."
       },
       {
         "_id": "L687",
-        "name": "Future of Education",
-        "description": "Exploring trends and future directions in education."
+        "name": "Educational Horizons",
+        "description": "Analyzing emerging trends in educational practice."
       }
     ]
   },
   {
     "_id": "M1107",
-    "name": "Christian Ethics and Contemporary Issues",
-    "description": "Explores the application of Christian ethics in modern contexts.",
+    "name": "Modern Christian Moral Philosophy",
+    "description": "Study of Christian ethical principles in contemporary society.",
     "course": "RS113",
     "lessons": [
       {
         "_id": "L688",
-        "name": "Moral Decision-Making",
-        "description": "Principles of making ethical decisions based on Christian teachings."
+        "name": "Ethical Reasoning",
+        "description": "Understanding Christian approaches to ethical choices."
       },
       {
         "_id": "L689",
-        "name": "Virtues and Vices",
-        "description": "Exploration of key virtues and vices in Christian thought."
+        "name": "Moral Character",
+        "description": "Analysis of moral development in Christian thought."
       },
       {
         "_id": "L690",
-        "name": "Faith in Action",
-        "description": "Application of Christian ethics to social issues."
+        "name": "Applied Ethics",
+        "description": "Implementing Christian principles in modern contexts."
       }
     ]
   },
   {
     "_id": "M1108",
-    "name": "Christian Ethics in Practice",
-    "description": "Examines real-world applications of Christian ethics.",
+    "name": "Applied Christian Ethics",
+    "description": "Practical applications of Christian moral teachings.",
     "course": "RS113",
     "lessons": [
       {
         "_id": "L691",
-        "name": "Ethical Dilemmas",
-        "description": "Case studies on ethical dilemmas faced by Christians."
+        "name": "Moral Challenges",
+        "description": "Examining modern ethical challenges through Christian perspectives."
       },
       {
         "_id": "L692",
-        "name": "Community Engagement",
-        "description": "How Christians can engage ethically in their communities."
+        "name": "Social Responsibility",
+        "description": "Understanding Christian roles in community service."
       },
       {
         "_id": "L693",
-        "name": "Global Christian Ethics",
-        "description": "Exploration of how Christian ethics applies globally."
+        "name": "International Ethics",
+        "description": "Study of Christian ethics in global contexts."
       }
     ]
   },
   {
     "_id": "M1109",
-    "name": "Philosophical Foundations of Ethics",
-    "description": "Investigates philosophical theories underpinning Christian ethics.",
+    "name": "Foundations of Christian Thought",
+    "description": "Exploration of theoretical bases for Christian moral reasoning.",
     "course": "RS113",
     "lessons": [
       {
         "_id": "L694",
-        "name": "Historical Context",
-        "description": "Study of historical developments in Christian ethical thought."
+        "name": "Ethical Evolution",
+        "description": "Tracing developments in Christian moral philosophy."
       },
       {
         "_id": "L695",
-        "name": "Key Ethical Theories",
-        "description": "Exploration of major ethical theories in Christianity."
+        "name": "Moral Frameworks",
+        "description": "Analysis of fundamental Christian ethical principles."
       },
       {
         "_id": "L696",
-        "name": "Comparative Ethics",
-        "description": "Comparison of Christian ethics with other ethical systems."
+        "name": "Ethical Perspectives",
+        "description": "Contrasting Christian ethics with other moral systems."
       }
     ]
   },
   {
     "_id": "M1110",
-    "name": "Christianity in Historical Context",
-    "description": "Focuses on the development of early Christianity.",
-    "course": "RS114",
+    "name": "Early Christian Development",
+    "description": "Studies the origins and early growth of Christianity as a religious movement.",
+    "course": "RS114", 
     "lessons": [
       {
         "_id": "L697",
-        "name": "Life of Jesus",
-        "description": "Analysis of the historical context and teachings of Jesus Christ."
+        "name": "Understanding Jesus's Ministry",
+        "description": "Examining the ministry, message and historical significance of Jesus."
       },
       {
         "_id": "L698",
-        "name": "Apostolic Contributions",
-        "description": "Study of the Apostles and their role in early Christianity."
+        "name": "Early Church Leaders",
+        "description": "Analyzing the early church leaders and their impact on Christianity's foundation."
       },
       {
         "_id": "L699",
-        "name": "Spread of Christianity",
-        "description": "Understanding the factors that contributed to the spread of Christianity."
+        "name": "Growth of the Early Church",
+        "description": "Exploring how Christianity expanded from a small sect to a major religion."
       }
     ]
   },
   {
     "_id": "M1111",
-    "name": "Challenges in Early Christianity",
-    "description": "Explores challenges faced by early Christian communities.",
+    "name": "Early Christian Adversity",
+    "description": "Analyzes the obstacles and trials of the early Christian movement.",
     "course": "RS114",
     "lessons": [
       {
         "_id": "L700",
-        "name": "Persecution of Christians",
-        "description": "Examination of the persecution faced by early Christians."
+        "name": "Religious Opposition",
+        "description": "Understanding the resistance and hardships early Christians encountered."
       },
       {
         "_id": "L701",
-        "name": "Heretical Movements",
-        "description": "Study of heretical movements and their impact on Christianity."
+        "name": "Doctrinal Disputes",
+        "description": "Examining early theological controversies and their resolution."
       },
       {
         "_id": "L702",
-        "name": "Formation of Doctrine",
-        "description": "Understanding the development of early Christian doctrines."
+        "name": "Theological Development",
+        "description": "Analyzing how core Christian beliefs evolved and were formalized."
       }
     ]
   },
   {
     "_id": "M1112",
-    "name": "Legacy of Early Christianity",
-    "description": "Examines the lasting impact of early Christianity on the modern world.",
+    "name": "Christianity's Historical Impact",
+    "description": "Studies Christianity's influence throughout history to present day.",
     "course": "RS114",
     "lessons": [
       {
         "_id": "L703",
-        "name": "Influence on Western Thought",
-        "description": "Exploring Christianity's influence on Western philosophical thought."
+        "name": "Philosophical Contributions",
+        "description": "Analyzing Christianity's role in shaping Western intellectual tradition."
       },
       {
         "_id": "L704",
-        "name": "Christianity and Culture",
-        "description": "Analysis of how Christianity shaped cultural developments."
+        "name": "Societal Influence",
+        "description": "Examining how Christian values have impacted social development."
       },
       {
         "_id": "L705",
-        "name": "Modern Christianity",
-        "description": "Understanding the evolution of Christianity into the modern era."
+        "name": "Contemporary Christianity",
+        "description": "Studying how Christianity has adapted to contemporary challenges."
       }
     ]
   },
   {
     "_id": "M1113",
-    "name": "Leadership in Christian Contexts",
-    "description": "Investigates leadership principles within Christian communities.",
+    "name": "Christian Leadership Principles",
+    "description": "Explores effective leadership approaches in Christian organizations.",
     "course": "RS115",
     "lessons": [
       {
         "_id": "L706",
-        "name": "Biblical Leadership Models",
-        "description": "Study of leadership models presented in the Bible."
+        "name": "Scriptural Leadership",
+        "description": "Analyzing leadership examples from biblical narratives."
       },
       {
         "_id": "L707",
-        "name": "Servant Leadership",
-        "description": "Exploring the concept of servant leadership in ministry."
+        "name": "Service-Based Leadership",
+        "description": "Understanding the principles of leading through service."
       },
       {
         "_id": "L708",
-        "name": "Community Building Strategies",
-        "description": "Effective strategies for building and nurturing Christian communities."
+        "name": "Building Faith Communities",
+        "description": "Learning methods for developing strong religious communities."
       }
     ]
   },
   {
     "_id": "M1114",
-    "name": "Practical Ministry Skills",
-    "description": "Focuses on skills necessary for effective ministry.",
+    "name": "Ministry Fundamentals",
+    "description": "Covers essential skills for successful religious leadership.",
     "course": "RS115",
     "lessons": [
       {
         "_id": "L709",
-        "name": "Pastoral Care Techniques",
-        "description": "Study of techniques for providing pastoral care."
+        "name": "Spiritual Guidance",
+        "description": "Learning methods for providing spiritual support and counsel."
       },
       {
         "_id": "L710",
-        "name": "Conflict Resolution",
-        "description": "Strategies for resolving conflicts within church settings."
+        "name": "Managing Disagreements",
+        "description": "Developing skills for handling conflicts in religious settings."
       },
       {
         "_id": "L711",
-        "name": "Ethical Stewardship",
-        "description": "Understanding stewardship principles in church management."
+        "name": "Resource Management",
+        "description": "Learning responsible management of church resources."
       }
     ]
   },
   {
     "_id": "M1115",
-    "name": "The Role of Faith in Leadership",
-    "description": "Examines the intersection of faith and leadership.",
+    "name": "Faith-Based Leadership",
+    "description": "Studies how faith shapes leadership decisions and style.",
     "course": "RS115",
     "lessons": [
       {
         "_id": "L712",
-        "name": "Faith and Decision-Making",
-        "description": "How faith influences decision-making in leadership."
+        "name": "Spiritual Decision-Making",
+        "description": "Understanding how beliefs guide leadership choices."
       },
       {
         "_id": "L713",
-        "name": "Vision and Mission in Ministry",
-        "description": "Establishing a vision and mission in ministry contexts."
+        "name": "Ministry Direction",
+        "description": "Developing clear purpose and goals in religious leadership."
       },
       {
         "_id": "L714",
-        "name": "Leading with Integrity",
-        "description": "Principles of integrity in Christian leadership."
+        "name": "Ethical Leadership",
+        "description": "Exploring moral principles in religious leadership roles."
       }
     ]
   },
   {
     "_id": "M1116",
-    "name": "Understanding Sufism",
-    "description": "Explores key concepts and figures in Sufism.",
+    "name": "Introduction to Sufi Thought",
+    "description": "Examines fundamental aspects and important figures of Sufism.",
     "course": "RS116",
     "lessons": [
       {
         "_id": "L715",
-        "name": "Historical Development of Sufism",
-        "description": "Study of the historical evolution of Sufism."
+        "name": "Origins of Sufism",
+        "description": "Tracing the development and growth of Sufi traditions."
       },
       {
         "_id": "L716",
-        "name": "Major Sufi Thinkers",
-        "description": "Exploration of significant figures in Sufi history."
+        "name": "Influential Sufi Teachers",
+        "description": "Learning about key personalities who shaped Sufi thought."
       },
       {
         "_id": "L717",
-        "name": "Sufi Practices and Rituals",
-        "description": "Understanding key practices and rituals in Sufism."
+        "name": "Sufi Traditions",
+        "description": "Studying essential practices in Sufi spirituality."
       }
     ]
   },
   {
     "_id": "M1117",
-    "name": "Philosophy and Mysticism in Sufism",
-    "description": "Examines the philosophical dimensions of Sufi thought.",
+    "name": "Sufi Philosophy",
+    "description": "Analyzes the philosophical foundations of Sufi teachings.",
     "course": "RS116",
     "lessons": [
       {
         "_id": "L718",
-        "name": "Philosophical Influences on Sufism",
-        "description": "Exploration of philosophical ideas that shaped Sufism."
+        "name": "Philosophical Roots",
+        "description": "Understanding the intellectual foundations of Sufi thought."
       },
       {
         "_id": "L719",
-        "name": "Mystical Experiences",
-        "description": "Study of the nature of mystical experiences in Sufism."
+        "name": "Spiritual Experience",
+        "description": "Examining the role of direct spiritual experience in Sufism."
       },
       {
         "_id": "L720",
-        "name": "The Role of Love in Sufism",
-        "description": "Understanding the centrality of love in Sufi philosophy."
+        "name": "Divine Love",
+        "description": "Analyzing the concept of divine love in Sufi teachings."
       }
     ]
   },
   {
     "_id": "M1118",
-    "name": "Sufism and Society",
-    "description": "Investigates the social impact of Sufi teachings.",
+    "name": "Sufism in Modern Life",
+    "description": "Explores Sufism's relevance and influence in contemporary society.",
     "course": "RS116",
     "lessons": [
       {
         "_id": "L721",
-        "name": "Sufism in Contemporary Society",
-        "description": "Exploration of the relevance of Sufism today."
+        "name": "Modern Sufi Practice",
+        "description": "Understanding how Sufi teachings apply to modern life."
       },
       {
         "_id": "L722",
-        "name": "Sufi Orders and Their Impact",
-        "description": "Study of various Sufi orders and their social influence."
+        "name": "Sufi Communities",
+        "description": "Examining different Sufi groups and their community impact."
       },
       {
         "_id": "L723",
-        "name": "Sufism and Interfaith Dialogue",
-        "description": "Examining the role of Sufism in promoting interfaith understanding."
+        "name": "Spiritual Dialogue",
+        "description": "Exploring Sufism's role in spiritual and religious discourse."
       }
     ]
   },
   {
     "_id": "M1119",
-    "name": "Ethics in Islamic Thought",
-    "description": "Explores moral teachings in Islam and their application.",
+    "name": "Islamic Moral Philosophy",
+    "description": "Studies ethical principles and their practical application in Islam.",
     "course": "RS117",
     "lessons": [
       {
         "_id": "L724",
-        "name": "Divine Guidance in Ethics",
-        "description": "Understanding divine guidance in moral decision-making."
+        "name": "Sources of Guidance",
+        "description": "Examining Islamic sources for ethical decision-making."
       },
       {
         "_id": "L725",
-        "name": "Moral Reasoning in Islam",
-        "description": "Study of the principles of moral reasoning in Islamic thought."
+        "name": "Islamic Ethics",
+        "description": "Understanding the framework of moral reasoning in Islam."
       },
       {
         "_id": "L726",
-        "name": "Ethics and Society",
-        "description": "Exploration of the application of Islamic ethics in social contexts."
+        "name": "Social Ethics",
+        "description": "Studying how Islamic ethics guide social behavior."
       }
     ]
   },
   {
     "_id": "M1120",
-    "name": "Case Studies in Islamic Ethics",
-    "description": "Examines real-world ethical dilemmas in an Islamic context.",
+    "name": "Applied Islamic Ethics",
+    "description": "Examines practical applications of Islamic moral principles.",
     "course": "RS117",
     "lessons": [
       {
         "_id": "L727",
-        "name": "Contemporary Ethical Issues",
-        "description": "Analysis of current ethical issues faced by Muslims."
+        "name": "Modern Ethical Challenges",
+        "description": "Addressing contemporary moral issues from Islamic perspectives."
       },
       {
         "_id": "L728",
-        "name": "Islamic Perspectives on Justice",
-        "description": "Exploring the concept of justice in Islamic teachings."
+        "name": "Islamic Justice",
+        "description": "Understanding Islamic principles of fairness and equity."
       },
       {
         "_id": "L729",
-        "name": "Personal Spiritual Growth",
-        "description": "How ethical teachings foster personal development."
+        "name": "Spiritual Development",
+        "description": "Learning how moral teachings enhance spiritual growth."
       }
     ]
   },
   {
     "_id": "M1121",
-    "name": "Islamic Ethics and Global Issues",
-    "description": "Investigates the impact of Islamic ethics on global challenges.",
+    "name": "Islamic Ethics in Global Context",
+    "description": "Analyzes Islamic ethical responses to worldwide issues.",
     "course": "RS117",
     "lessons": [
       {
         "_id": "L730",
-        "name": "Environmental Ethics in Islam",
-        "description": "Understanding Islamic principles regarding environmental stewardship."
+        "name": "Environmental Responsibility",
+        "description": "Exploring Islamic views on environmental protection."
       },
       {
         "_id": "L731",
-        "name": "Global Justice and Equity",
-        "description": "Exploration of the role of Islamic ethics in global justice movements."
+        "name": "Social Justice",
+        "description": "Understanding Islamic perspectives on global equality."
       },
       {
         "_id": "L732",
-        "name": "Ethics in Conflict Resolution",
-        "description": "Applying Islamic ethics to conflict resolution processes."
+        "name": "Peaceful Resolution",
+        "description": "Learning Islamic approaches to resolving disputes."
       }
     ]
   },
   {
     "_id": "M1122",
-    "name": "Islamic Esotericism and Spirituality",
-    "description": "Explores the esoteric aspects of Islamic spirituality.",
+    "name": "Islamic Spiritual Traditions",
+    "description": "Studies mystical and spiritual dimensions of Islam.",
     "course": "RS118",
     "lessons": [
       {
         "_id": "L733",
-        "name": "Understanding the Unseen",
-        "description": "Examining concepts related to the unseen world in Islam."
+        "name": "Spiritual Realms",
+        "description": "Learning about Islamic concepts of spiritual existence."
       },
       {
         "_id": "L734",
-        "name": "Spiritual Symbolism",
-        "description": "Exploration of symbols and their meanings in Islamic esotericism."
+        "name": "Sacred Symbols",
+        "description": "Understanding symbolic meanings in Islamic spirituality."
       },
       {
         "_id": "L735",
-        "name": "Mystical Experiences in Islam",
-        "description": "Study of mystical experiences and their significance in Islamic tradition."
+        "name": "Spiritual Journey",
+        "description": "Examining spiritual experiences in Islamic tradition."
       }
     ]
   },
   {
     "_id": "M1123",
-    "name": "The Role of Khidr in Islamic Mysticism",
-    "description": "Focuses on the significance of Khidr in Islamic esoteric traditions.",
+    "name": "Khidr in Islamic Spirituality",
+    "description": "Analyzes the spiritual figure of Khidr in Islamic tradition.",
     "course": "RS118",
     "lessons": [
       {
         "_id": "L736",
-        "name": "Khidr's Symbolism",
-        "description": "Understanding the symbolic representation of Khidr."
+        "name": "Symbolic Meaning",
+        "description": "Understanding the spiritual significance of Khidr."
       },
       {
         "_id": "L737",
-        "name": "Khidr's Teachings",
-        "description": "Exploration of the teachings attributed to Khidr."
+        "name": "Spiritual Lessons",
+        "description": "Learning from stories associated with Khidr."
       },
       {
         "_id": "L738",
-        "name": "Khidr in Sufi Literature",
-        "description": "Analysis of Khidr's role in Sufi texts and traditions."
+        "name": "Literary Presence",
+        "description": "Studying Khidr's role in spiritual literature."
       }
     ]
   },
   {
     "_id": "M1124",
-    "name": "Islamic Mysticism and Society",
-    "description": "Examines the social impact of Islamic mysticism.",
+    "name": "Islamic Spirituality Today",
+    "description": "Studies contemporary expressions of Islamic mysticism.",
     "course": "RS118",
     "lessons": [
       {
         "_id": "L739",
-        "name": "Sufism and Cultural Identity",
-        "description": "Exploration of how Sufism shapes cultural identities."
+        "name": "Cultural Expression",
+        "description": "Understanding how spirituality influences cultural identity."
       },
       {
         "_id": "L740",
-        "name": "Sufi Practices in Society",
-        "description": "Study of Sufi practices and their role in community building."
+        "name": "Community Impact",
+        "description": "Examining spiritual practices in community life."
       },
       {
         "_id": "L741",
-        "name": "Interfaith Relations and Sufism",
-        "description": "The role of Sufism in promoting interfaith dialogue and understanding."
+        "name": "Spiritual Dialogue",
+        "description": "Exploring spiritual traditions across faith boundaries."
       }
     ]
   },
   {
     "_id": "M1125",
-    "name": "Hydraulic Innovations of Ancient Civilizations",
-    "description": "Explores key hydraulic engineering projects in ancient cultures.",
+    "name": "Ancient Water Engineering",
+    "description": "Studies historical water management and engineering achievements.",
     "course": "RS119",
     "lessons": [
       {
         "_id": "L742",
-        "name": "Aqueducts of Rome",
-        "description": "Study of the design and construction of Roman aqueducts."
+        "name": "Roman Water Systems",
+        "description": "Analyzing Roman engineering and water distribution methods."
       },
       {
         "_id": "L743",
-        "name": "Irrigation Techniques in Mesopotamia",
-        "description": "Exploration of irrigation methods used in ancient Mesopotamia."
+        "name": "Ancient Agricultural Systems",
+        "description": "Studying early farming and water management techniques."
       },
       {
         "_id": "L744",
-        "name": "Water Management in Ancient Egypt",
-        "description": "Understanding water management systems in ancient Egypt."
+        "name": "Nile Valley Engineering",
+        "description": "Examining water control systems of ancient Egyptian civilization."
       }
     ]
   },
   {
     "_id": "M1126",
-    "name": "Water as a Cultural Symbol",
-    "description": "Examines the symbolic meanings of water in various cultures.",
+    "name": "Water in Cultural Heritage",
+    "description": "Explores water's cultural significance across civilizations.",
     "course": "RS119",
     "lessons": [
       {
         "_id": "L745",
-        "name": "Mythology and Water",
-        "description": "Study of water-related myths across different cultures."
+        "name": "Water Stories",
+        "description": "Studying water-themed legends in world cultures."
       },
       {
         "_id": "L746",
-        "name": "Rituals Involving Water",
-        "description": "Exploration of rituals that incorporate water as a central element."
+        "name": "Sacred Waters",
+        "description": "Understanding water's role in religious ceremonies."
       },
       {
         "_id": "L747",
-        "name": "Water in Art and Literature",
-        "description": "Analysis of representations of water in art and literature."
+        "name": "Artistic Expression",
+        "description": "Examining water themes in cultural expression."
       }
     ]
   },
   {
     "_id": "M1127",
-    "name": "Contemporary Water Issues",
-    "description": "Focuses on modern water-related challenges.",
+    "name": "Modern Water Challenges",
+    "description": "Analyzes current global water management issues.",
     "course": "RS119",
     "lessons": [
       {
         "_id": "L748",
-        "name": "Global Water Scarcity",
-        "description": "Understanding the causes and implications of water scarcity."
+        "name": "Water Access",
+        "description": "Understanding worldwide water availability challenges."
       },
       {
         "_id": "L749",
-        "name": "Water and Climate Change",
-        "description": "Exploration of the impacts of climate change on water resources."
+        "name": "Environmental Impact",
+        "description": "Studying climate effects on water resources."
       },
       {
         "_id": "L750",
-        "name": "Water Governance and Policy",
-        "description": "Study of policies related to water management and governance."
+        "name": "Water Management",
+        "description": "Examining approaches to water resource administration."
       }
     ]
   },
   {
     "_id": "M1128",
-    "name": "Understanding Religion and Society",
-    "description": "Investigates the relationship between religion and societal structures.",
+    "name": "Religion in Modern Society",
+    "description": "Analyzes interactions between religious and social institutions.",
     "course": "RS120",
     "lessons": [
       {
         "_id": "L751",
-        "name": "Religion as a Social Construct",
-        "description": "Study of how religion shapes and is shaped by social constructs."
+        "name": "Social Dimensions",
+        "description": "Examining religion's role in social development."
       },
       {
         "_id": "L752",
-        "name": "The Role of Religion in Social Movements",
-        "description": "Exploration of how religion influences social movements."
+        "name": "Religious Activism",
+        "description": "Studying religion's impact on social change."
       },
       {
         "_id": "L753",
-        "name": "Secularization and Its Impacts",
-        "description": "Understanding the process of secularization in modern societies."
+        "name": "Modern Trends",
+        "description": "Analyzing religious change in contemporary society."
       }
     ]
   },
   {
     "_id": "M1129",
-    "name": "Interfaith Dialogue and Cooperation",
-    "description": "Explores the dynamics of interfaith relationships.",
+    "name": "Religious Dialogue",
+    "description": "Studies communication between different faith traditions.",
     "course": "RS120",
     "lessons": [
       {
         "_id": "L754",
-        "name": "History of Interfaith Dialogue",
-        "description": "Study of significant interfaith dialogues throughout history."
+        "name": "Historical Exchange",
+        "description": "Examining past interactions between religions."
       },
       {
         "_id": "L755",
-        "name": "Building Bridges Between Faiths",
-        "description": "Strategies for fostering cooperation among different religious communities."
+        "name": "Interfaith Connection",
+        "description": "Learning methods for religious cooperation."
       },
       {
         "_id": "L756",
-        "name": "Challenges to Interfaith Engagement",
-        "description": "Analyzing obstacles to effective interfaith dialogue."
+        "name": "Dialogue Barriers",
+        "description": "Understanding obstacles to religious communication."
       }
     ]
   },
   {
     "_id": "M1130",
-    "name": "Religion and Globalization",
-    "description": "Examines the impact of globalization on religious practices.",
+    "name": "Religion in Global Context",
+    "description": "Examines religious adaptation to global changes.",
     "course": "RS120",
     "lessons": [
       {
         "_id": "L757",
-        "name": "Religion in a Globalized World",
-        "description": "Exploring the role of religion in a global context."
+        "name": "Global Religious Trends",
+        "description": "Studying religion's evolution in modern times."
       },
       {
         "_id": "L758",
-        "name": "Cultural Exchange and Religion",
-        "description": "Understanding how globalization affects cultural and religious exchange."
+        "name": "Religious Interaction",
+        "description": "Analyzing cross-cultural religious exchange."
       },
       {
         "_id": "L759",
-        "name": "Religious Responses to Global Challenges",
-        "description": "Study of how religions respond to global issues."
+        "name": "Faith-Based Solutions",
+        "description": "Examining religious approaches to world issues."
       }
     ]
   },
   {
     "_id": "M1131",
-    "name": "The Foundations of World Religions",
-    "description": "Introduces major world religions and their foundational beliefs.",
+    "name": "Major World Faiths",
+    "description": "Surveys core beliefs of principal world religions.",
     "course": "RS121",
     "lessons": [
       {
         "_id": "L760",
-        "name": "Judaism: History and Beliefs",
-        "description": "Overview of the history and core beliefs of Judaism."
+        "name": "Jewish Faith",
+        "description": "Understanding fundamental Jewish beliefs and traditions."
       },
       {
         "_id": "L761",
-        "name": "Christianity: Core Tenets",
-        "description": "Study of the foundational beliefs and practices of Christianity."
+        "name": "Christian Beliefs",
+        "description": "Examining essential Christian doctrines and practices."
       },
       {
         "_id": "L762",
-        "name": "Islam: Principles and Practices",
-        "description": "Introduction to the basic tenets and practices of Islam."
+        "name": "Islamic Teachings",
+        "description": "Learning core Islamic beliefs and observances."
       }
     ]
   },
   {
     "_id": "M1132",
-    "name": "Religious Practices Around the World",
-    "description": "Examines rituals and practices across major religions.",
+    "name": "Religious Observances",
+    "description": "Studies worship practices in different faiths.",
     "course": "RS121",
     "lessons": [
       {
         "_id": "L763",
-        "name": "Rituals in Judaism",
-        "description": "Study of key rituals in Jewish practice."
+        "name": "Jewish Traditions",
+        "description": "Understanding important Jewish religious practices."
       },
       {
         "_id": "L764",
-        "name": "Christian Sacraments",
-        "description": "Exploration of sacraments in Christian traditions."
+        "name": "Christian Worship",
+        "description": "Learning about Christian religious ceremonies."
       },
       {
         "_id": "L765",
-        "name": "Islamic Rituals",
-        "description": "Understanding the significance of rituals in Islam."
+        "name": "Muslim Devotion",
+        "description": "Examining core Islamic worship practices."
       }
     ]
   },
   {
     "_id": "M1133",
-    "name": "Religion and Ethics",
-    "description": "Explores the relationship between religion and ethical frameworks.",
+    "name": "Religious Moral Systems",
+    "description": "Compares ethical teachings across religions.",
     "course": "RS121",
     "lessons": [
       {
         "_id": "L766",
-        "name": "Ethics in Judaism",
-        "description": "Examination of ethical teachings in Judaism."
+        "name": "Jewish Values",
+        "description": "Understanding moral principles in Judaism."
       },
       {
         "_id": "L767",
-        "name": "Christian Moral Philosophy",
-        "description": "Study of moral philosophy within Christianity."
+        "name": "Christian Ethics",
+        "description": "Examining ethical teachings in Christianity."
       },
       {
         "_id": "L768",
-        "name": "Islamic Ethics and Morality",
-        "description": "Exploration of ethical principles in Islam."
+        "name": "Islamic Values",
+        "description": "Learning moral guidelines in Islamic tradition."
       }
     ]
   }
