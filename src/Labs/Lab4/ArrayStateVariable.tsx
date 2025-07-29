@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function ArrayStateVariable() {
@@ -9,7 +9,7 @@ export default function ArrayStateVariable() {
   };
 
   const deleteElement = (index: number) => {
-    setArray(array.filter((item, i) => i !== index));
+    setArray(array.filter((_, i) => i !== index));
   };
 
   return (
