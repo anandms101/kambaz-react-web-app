@@ -13,7 +13,7 @@ export default function Signup() {
     lastName: "", 
     email: "", 
     dob: "",
-    role: "STUDENT"
+    role: "FACULTY"
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
