@@ -1,5 +1,5 @@
-import { Button, Card, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Card, Col, Row, Modal } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleEnrollment, toggleShowAllEnrollments } from "./reducer";
 import { useState } from "react";
@@ -22,10 +22,13 @@ export default function Dashboard(
   }
 ) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { enrollments, showAllEnrollments } = useSelector((state: any) => state.enrollmentReducer);
   const isFaculty = currentUser.role === "FACULTY";
   const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [newlyAddedCourse, setNewlyAddedCourse] = useState<any>(null);
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1>
@@ -37,7 +40,11 @@ export default function Dashboard(
             <button
               className="btn btn-primary float-end"
               id="wd-add-new-course-click"
-              onClick={addNewCourse}
+              onClick={() => {
+                const newCourse = addNewCourse();
+                setNewlyAddedCourse(newCourse);
+                setShowSuccessModal(true);
+              }}
             >
               Add
             </button>
@@ -63,13 +70,20 @@ export default function Dashboard(
           <hr />
         </>
       }
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between align-items-center">
         <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
-        <Button onClick={() => dispatch(toggleShowAllEnrollments())}>Enrollments</Button>
+        <Button 
+          variant={showAllEnrollments ? "primary" : "outline-primary"}
+          onClick={() => dispatch(toggleShowAllEnrollments())}
+          className="d-flex align-items-center gap-2"
+        >
+          <i className={`fas fa-${showAllEnrollments ? 'eye' : 'eye-slash'}`}></i>
+          {showAllEnrollments ? "Show Enrolled Only" : "Show All Courses"}
+        </Button>
       </div>
       <hr />
       <div id="wd-dashboard-courses">
-        <Row xs={1} md={5} className="g-4">
+        <Row xs={1} md={2} lg={4} xl={5} className="gap-4">
           {courses
             .filter((course) =>
               showAllEnrollments ||
@@ -167,6 +181,49 @@ export default function Dashboard(
             })}
         </Row>
       </div>
+
+      {/* Course Added Success Modal */}
+      <Modal show={showSuccessModal} onHide={() => setShowSuccessModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Course Added Successfully!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="text-center">
+            <i className="fas fa-check-circle text-success" style={{ fontSize: "3rem" }}></i>
+            <h4 className="mt-3">{newlyAddedCourse?.name}</h4>
+            <p className="text-muted">{newlyAddedCourse?.description}</p>
+            <div className="row text-start">
+              <div className="col-6">
+                <strong>Course Number:</strong> {newlyAddedCourse?.number}
+              </div>
+              <div className="col-6">
+                <strong>Start Date:</strong> {newlyAddedCourse?.startDate}
+              </div>
+              <div className="col-6">
+                <strong>End Date:</strong> {newlyAddedCourse?.endDate}
+              </div>
+              <div className="col-6">
+                <strong>Course ID:</strong> {newlyAddedCourse?._id}
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowSuccessModal(false)}>
+            Close
+          </Button>
+          <Button 
+            variant="primary" 
+            onClick={() => {
+              setShowSuccessModal(false);
+              // Navigate to the new course using React Router
+              navigate(`/Kambaz/Courses/${newlyAddedCourse?._id}/Home`);
+            }}
+          >
+            Go to Course
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

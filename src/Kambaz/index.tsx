@@ -17,12 +17,14 @@ export default function Kambaz() {
         image: "/images/reactjs.jpg",
     });
     const addNewCourse = () => {
-        setCourses([...courses, { ...course, _id: uuidv4() }]);
+        const newCourse = { ...course, _id: uuidv4() };
+        setCourses([...courses, newCourse]);
         setCourse({
             _id: "1234", name: "New Course", number: "New Number",
             startDate: "2023-09-10", endDate: "2023-12-15", description: "New Description",
             image: "/images/reactjs.jpg",
         });
+        return newCourse;
     };
     const deleteCourse = (courseId: any) => {
         setCourses(courses.filter((course) => course._id !== courseId));
