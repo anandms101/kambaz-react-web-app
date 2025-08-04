@@ -15,10 +15,8 @@ import { setEnrollments } from "./reducer";
 
 export default function Kambaz() {
   const [courses, setCourses] = useState<any[]>([]);
-  const [enrolling, setEnrolling] = useState<boolean>(false);
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const { enrollments } = useSelector((state: any) => state.enrollmentReducer);
 
   const fetchEnrollments = useCallback(async () => {
     try {
@@ -38,15 +36,6 @@ export default function Kambaz() {
     }
   }, []);
 
-  const fetchCourses = useCallback(async () => {
-    try {
-      const allCourses = await courseClient.fetchAllCourses();
-      setCourses(allCourses);
-    } catch (error) {
-      console.error("Error fetching all courses:", error);
-    }
-  }, []);
-
   const updateEnrollment = useCallback(async (courseId: string, enrolled: boolean) => {
     try {
       if (!currentUser) {
@@ -55,9 +44,9 @@ export default function Kambaz() {
       }
       
       if (enrolled) {
-        await userClient.enrollIntoCourse(currentUser._id, courseId);
+        await userClient.enrollIntoCourse(courseId);
       } else {
-        await userClient.unenrollFromCourse(currentUser._id, courseId);
+        await userClient.unenrollFromCourse(courseId);
       }
 
       await fetchEnrollments(); // Refresh enrollments after toggle
@@ -101,7 +90,7 @@ export default function Kambaz() {
   };
 
   const deleteCourse = async (courseId: string) => {
-    const status = await courseClient.deleteCourse(courseId);
+    await courseClient.deleteCourse(courseId);
     setCourses(courses.filter((course) => course._id !== courseId));
   };
 
@@ -121,13 +110,9 @@ export default function Kambaz() {
   useEffect(() => {
     if (currentUser) {
       fetchEnrollments();
-      if (enrolling) {
-        fetchCourses();
-      } else {
-        findCoursesForUser();
-      }
+      findCoursesForUser();
     }
-  }, [currentUser, enrolling, fetchEnrollments, fetchCourses, findCoursesForUser]);
+  }, [currentUser, fetchEnrollments, findCoursesForUser]);
 
   return (
     <Session>
@@ -148,8 +133,6 @@ export default function Kambaz() {
                     addCourse={addCourse}
                     deleteCourse={deleteCourse}
                     updateCourse={updateCourse}
-                    enrolling={enrolling}
-                    setEnrolling={setEnrolling}
                     updateEnrollment={updateEnrollment}
                   />
                 </ProtectedRoute>

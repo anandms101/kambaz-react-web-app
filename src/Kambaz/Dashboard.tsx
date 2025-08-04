@@ -1,7 +1,7 @@
 import { Button, Card, Col, Row, Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleEnrollment, toggleShowAllEnrollments } from "./reducer";
+import { toggleShowAllEnrollments } from "./reducer";
 import { useState } from "react";
 
 export default function Dashboard(
@@ -12,8 +12,6 @@ export default function Dashboard(
     addCourse,
     deleteCourse,
     updateCourse,
-    enrolling,
-    setEnrolling,
     updateEnrollment,
   }: {
     courses: any[];
@@ -22,8 +20,6 @@ export default function Dashboard(
     addCourse: () => void;
     deleteCourse: (course: any) => void;
     updateCourse: () => void;
-    enrolling: boolean;
-    setEnrolling: (enrolling: boolean) => void;
     updateEnrollment: (courseId: string, enrolled: boolean) => void;
   }
 ) {

@@ -1,6 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAssignment, addAssignment } from "./reducer";
 import * as assignmentsClient from "./Client";

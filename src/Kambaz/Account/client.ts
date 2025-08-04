@@ -27,7 +27,7 @@ export const findCoursesForUser = async (userId: string) => {
   return response.data;
 };
 
-export const enrollIntoCourse = async (userId: string, courseId: string) => {
+export const enrollIntoCourse = async (courseId: string) => {
   const response = await axiosWithCredentials.post(
     `${ENROLLMENTS_API}/current`,
     { courseId }
@@ -35,7 +35,7 @@ export const enrollIntoCourse = async (userId: string, courseId: string) => {
   return response.data;
 };
 
-export const unenrollFromCourse = async (userId: string, courseId: string) => {
+export const unenrollFromCourse = async (courseId: string) => {
   const response = await axiosWithCredentials.post(
     `${ENROLLMENTS_API}/current`,
     { courseId }
