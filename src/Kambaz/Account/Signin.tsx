@@ -3,30 +3,37 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "./reducer";
 import { useDispatch } from "react-redux";
-import * as db from "../Database";
+import * as client from "./client";
+import { setEnrollments } from "../reducer";
+
 export default function Signin() {
   const [credentials, setCredentials] = useState<any>({});
   const [error, setError] = useState<string>("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  const signin = () => {
+  const signin = async () => {
     if (!credentials.username?.trim() || !credentials.password?.trim()) {
       setError("Please enter both username and password");
       return;
     }
 
-    const user = db.users.find(
-      (u: any) => u.username === credentials.username && u.password === credentials.password);
-    
-    if (!user) {
-      setError("Invalid username or password. Please try again.");
-      return;
+    try {
+      const user = await client.signin(credentials);
+      if (!user) {
+        setError("Invalid username or password. Please try again.");
+        return;
+      }
+      
+      setError(""); // Clear any previous errors
+      dispatch(setCurrentUser(user));
+
+      const enrollments = await client.getEnrollments();
+      dispatch(setEnrollments(enrollments));
+      navigate("/Kambaz/Dashboard");
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Signin failed. Please try again.");
     }
-    
-    setError(""); // Clear any previous errors
-    dispatch(setCurrentUser(user));
-    navigate("/Kambaz/Dashboard");
   };
 
   return (
@@ -59,8 +66,13 @@ export default function Signin() {
           type="password" 
           id="wd-password" 
         />
-        <Button onClick={signin} id="wd-signin-btn" className="w-100 mb-2" > Sign in </Button>
-        <Link id="wd-signup-link" to="/Kambaz/Account/Signup">Sign up</Link>
+        <Button onClick={signin} id="wd-signin-btn" className="w-100 mb-2">
+          Sign in
+        </Button>
+        <Link id="wd-signup-link" to="/Kambaz/Account/Signup">
+          Sign up
+        </Link>
       </div>
-    </div>);
+    </div>
+  );
 }

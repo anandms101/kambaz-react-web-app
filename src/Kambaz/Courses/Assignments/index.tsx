@@ -7,8 +7,9 @@ import AssignmentsControls from "./AssignmentsControl";
 import AssignmentsControlButtons from "./AssignmentsControlButton";
 import { useDispatch, useSelector } from "react-redux";
 import { FaTrash, FaEdit } from "react-icons/fa";
-import { deleteAssignment } from "./reducer";
-import { useState } from "react";
+import { deleteAssignment, setAssignments } from "./reducer";
+import { useState, useEffect } from "react";
+import * as assignmentsClient from "./Client";
 
 export default function Assignments() {
   const dispatch = useDispatch();
@@ -20,16 +21,30 @@ export default function Assignments() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [assignmentToDelete, setAssignmentToDelete] = useState<string | null>(null);
 
+  const fetchAssignmentsForCourse = async () => {
+    try {
+      const assignments = await assignmentsClient.findAssignmentsForCourse(cid!);
+      dispatch(setAssignments(assignments));
+    } catch (error) {
+      console.error("Error fetching assignments:", error);
+    }
+  };
+
   const handleDeleteClick = (assignmentId: string) => {
     setAssignmentToDelete(assignmentId);
     setShowDeleteModal(true);
   };
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = async () => {
     if (assignmentToDelete) {
-      dispatch(deleteAssignment(assignmentToDelete));
-      setShowDeleteModal(false);
-      setAssignmentToDelete(null);
+      try {
+        await assignmentsClient.deleteAssignment(assignmentToDelete);
+        dispatch(deleteAssignment(assignmentToDelete));
+        setShowDeleteModal(false);
+        setAssignmentToDelete(null);
+      } catch (error) {
+        console.error("Error deleting assignment:", error);
+      }
     }
   };
 
@@ -37,6 +52,12 @@ export default function Assignments() {
     setShowDeleteModal(false);
     setAssignmentToDelete(null);
   };
+
+  useEffect(() => {
+    if (cid) {
+      fetchAssignmentsForCourse();
+    }
+  }, [cid]);
 
   return (
     <div>

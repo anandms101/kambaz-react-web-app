@@ -9,16 +9,22 @@ export default function Dashboard(
     courses,
     course,
     setCourse,
-    addNewCourse,
+    addCourse,
     deleteCourse,
     updateCourse,
+    enrolling,
+    setEnrolling,
+    updateEnrollment,
   }: {
     courses: any[];
     course: any;
     setCourse: (course: any) => void;
-    addNewCourse: () => void;
+    addCourse: () => void;
     deleteCourse: (course: any) => void;
     updateCourse: () => void;
+    enrolling: boolean;
+    setEnrolling: (enrolling: boolean) => void;
+    updateEnrollment: (courseId: string, enrolled: boolean) => void;
   }
 ) {
   const dispatch = useDispatch();
@@ -29,22 +35,29 @@ export default function Dashboard(
   const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [newlyAddedCourse, setNewlyAddedCourse] = useState<any>(null);
+
+  const handleAddCourse = async () => {
+    try {
+      const newCourse = await addCourse();
+      setNewlyAddedCourse(newCourse);
+      setShowSuccessModal(true);
+    } catch (error) {
+      console.error("Error adding course:", error);
+    }
+  };
+
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
-      {isFaculty &&
+      {isFaculty && (
         <>
           <h5>
             New Course
             <button
               className="btn btn-primary float-end"
               id="wd-add-new-course-click"
-              onClick={() => {
-                const newCourse = addNewCourse();
-                setNewlyAddedCourse(newCourse);
-                setShowSuccessModal(true);
-              }}
+              onClick={handleAddCourse}
             >
               Add
             </button>
@@ -69,7 +82,7 @@ export default function Dashboard(
           />
           <hr />
         </>
-      }
+      )}
       <div className="d-flex justify-content-between align-items-center">
         <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
         <Button 
@@ -123,7 +136,7 @@ export default function Dashboard(
                   >
                     <Card.Img
                       variant="top"
-                      src={course.image}
+                      src={course.image || "/images/reactjs.jpg"}
                       height={200}
                       onError={(e) => {
                         // Fallback to React logo if the course image fails to load
@@ -143,41 +156,44 @@ export default function Dashboard(
                       <Link to={`/Kambaz/Courses/${course._id}/Home`}>
                         <Button variant="primary">Go</Button>
                       </Link>
-                      {isFaculty && <>
-                        <button
-                          onClick={(event) => {
-                            event.preventDefault();
-                            deleteCourse(course._id);
-                          }}
-                          className="btn btn-danger float-end"
-                          id="wd-delete-course-click"
-                        >
-                          Delete
-                        </button>
-                        <button
-                          id="wd-edit-course-click"
-                          onClick={(event) => {
-                            event.preventDefault();
-                            setCourse(course);
-                          }}
-                          className="btn btn-warning me-2 float-end"
-                        >
-                          Edit
-                        </button>
-                      </>}
+                      {isFaculty && (
+                        <>
+                          <button
+                            onClick={(event) => {
+                              event.preventDefault();
+                              deleteCourse(course._id);
+                            }}
+                            className="btn btn-danger float-end"
+                            id="wd-delete-course-click"
+                          >
+                            Delete
+                          </button>
+                          <button
+                            id="wd-edit-course-click"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              setCourse(course);
+                            }}
+                            className="btn btn-warning me-2 float-end"
+                          >
+                            Edit
+                          </button>
+                        </>
+                      )}
                       <Button
                         variant={isEnrolled ? "danger" : "success"}
                         className="float-end me-2"
                         onClick={(e) => {
                           e.preventDefault();
-                          dispatch(toggleEnrollment({ userId: currentUser._id, courseId: course._id }))
-                        }}>
+                          updateEnrollment(course._id, !isEnrolled);
+                        }}
+                      >
                         {isEnrolled ? "Unenroll" : "Enroll"}
                       </Button>
                     </Card.Body>
                   </Card>
                 </Col>
-              )
+              );
             })}
         </Row>
       </div>
@@ -190,20 +206,20 @@ export default function Dashboard(
         <Modal.Body>
           <div className="text-center">
             <i className="fas fa-check-circle text-success" style={{ fontSize: "3rem" }}></i>
-            <h4 className="mt-3">{newlyAddedCourse?.name}</h4>
-            <p className="text-muted">{newlyAddedCourse?.description}</p>
+            <h4 className="mt-3">{newlyAddedCourse?.name || "New Course"}</h4>
+            <p className="text-muted">{newlyAddedCourse?.description || "Course description"}</p>
             <div className="row text-start">
               <div className="col-6">
-                <strong>Course Number:</strong> {newlyAddedCourse?.number}
+                <strong>Course Number:</strong> {newlyAddedCourse?.number || "N/A"}
               </div>
               <div className="col-6">
-                <strong>Start Date:</strong> {newlyAddedCourse?.startDate}
+                <strong>Start Date:</strong> {newlyAddedCourse?.startDate || "N/A"}
               </div>
               <div className="col-6">
-                <strong>End Date:</strong> {newlyAddedCourse?.endDate}
+                <strong>End Date:</strong> {newlyAddedCourse?.endDate || "N/A"}
               </div>
               <div className="col-6">
-                <strong>Course ID:</strong> {newlyAddedCourse?._id}
+                <strong>Course ID:</strong> {newlyAddedCourse?._id || "N/A"}
               </div>
             </div>
           </div>
@@ -217,7 +233,9 @@ export default function Dashboard(
             onClick={() => {
               setShowSuccessModal(false);
               // Navigate to the new course using React Router
-              navigate(`/Kambaz/Courses/${newlyAddedCourse?._id}/Home`);
+              if (newlyAddedCourse?._id) {
+                navigate(`/Kambaz/Courses/${newlyAddedCourse._id}/Home`);
+              }
             }}
           >
             Go to Course
@@ -227,4 +245,3 @@ export default function Dashboard(
     </div>
   );
 }
-
