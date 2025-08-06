@@ -1,12 +1,14 @@
 import * as client from "./client";
 import { useEffect, useState } from "react";
 import { setCurrentUser } from "./reducer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setEnrollments } from "../reducer";
 
 export default function Session({ children }: { children: any }) {
   const [pending, setPending] = useState(true);
+  const [retryCount, setRetryCount] = useState(0);
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
   
   const fetchProfile = async () => {
     try {
@@ -42,6 +44,20 @@ export default function Session({ children }: { children: any }) {
     fetchProfile();
   }, []);
 
+  // If we have a currentUser in Redux but session check failed, 
+  // it might be a timing issue after signup - retry once
+  useEffect(() => {
+    if (!pending && !currentUser && retryCount < 1) {
+      const timer = setTimeout(() => {
+        setRetryCount(prev => prev + 1);
+        setPending(true);
+        fetchProfile();
+      }, 1000); // Wait 1 second before retry
+      
+      return () => clearTimeout(timer);
+    }
+  }, [pending, currentUser, retryCount]);
+
   if (!pending) {
     return children;
   }
@@ -54,6 +70,9 @@ export default function Session({ children }: { children: any }) {
           <span className="visually-hidden">Loading...</span>
         </div>
         <p className="mt-2">Checking session...</p>
+        {retryCount > 0 && (
+          <p className="mt-1 text-muted small">Retrying session check...</p>
+        )}
       </div>
     </div>
   );

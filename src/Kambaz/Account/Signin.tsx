@@ -9,6 +9,7 @@ import { setEnrollments } from "../reducer";
 export default function Signin() {
   const [credentials, setCredentials] = useState<any>({});
   const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
@@ -18,6 +19,7 @@ export default function Signin() {
       return;
     }
 
+    setIsLoading(true);
     try {
       const user = await client.signin(credentials);
       if (!user) {
@@ -30,9 +32,15 @@ export default function Signin() {
 
       const enrollments = await client.getEnrollments();
       dispatch(setEnrollments(enrollments));
+      
+      // Add a small delay to ensure session is established
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
       navigate("/Kambaz/Dashboard");
     } catch (err: any) {
       setError(err.response?.data?.message || "Signin failed. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -66,8 +74,13 @@ export default function Signin() {
           type="password" 
           id="wd-password" 
         />
-        <Button onClick={signin} id="wd-signin-btn" className="w-100 mb-2">
-          Sign in
+        <Button 
+          onClick={signin} 
+          id="wd-signin-btn" 
+          className="w-100 mb-2"
+          disabled={isLoading}
+        >
+          {isLoading ? "Signing in..." : "Sign in"}
         </Button>
         <Link id="wd-signup-link" to="/Kambaz/Account/Signup">
           Sign up
