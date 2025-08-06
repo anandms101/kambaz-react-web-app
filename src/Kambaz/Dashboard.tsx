@@ -48,35 +48,66 @@ export default function Dashboard(
       <hr />
       {isFaculty && (
         <>
-          <h5>
-            New Course
-            <button
-              className="btn btn-primary float-end"
-              id="wd-add-new-course-click"
-              onClick={handleAddCourse}
-            >
-              Add
-            </button>
-            <button
-              className="btn btn-warning float-end me-2"
-              onClick={updateCourse}
-              id="wd-update-course-click"
-            >
-              Update
-            </button>
-          </h5>
-          <br />
-          <input
-            value={course.name}
-            className="form-control mb-2"
-            onChange={(e) => setCourse({ ...course, name: e.target.value })}
-          />
-          <textarea
-            value={course.description}
-            className="form-control"
-            onChange={(e) => setCourse({ ...course, description: e.target.value })}
-          />
-          <hr />
+          <div className="card mb-4">
+            <div className="card-header">
+              <h5 className="mb-0">
+                <i className="fas fa-plus-circle me-2"></i>
+                New Course
+              </h5>
+            </div>
+            <div className="card-body">
+              <div className="row">
+                <div className="col-md-8">
+                  <div className="mb-3">
+                    <label className="form-label">
+                      <i className="fas fa-book me-2"></i>
+                      Course Name
+                    </label>
+                    <input
+                      value={course.name}
+                      className="form-control"
+                      onChange={(e) => setCourse({ ...course, name: e.target.value })}
+                      placeholder="Enter course name"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">
+                      <i className="fas fa-align-left me-2"></i>
+                      Course Description
+                    </label>
+                    <textarea
+                      value={course.description}
+                      className="form-control"
+                      rows={3}
+                      onChange={(e) => setCourse({ ...course, description: e.target.value })}
+                      placeholder="Enter course description"
+                    />
+                  </div>
+                </div>
+                <div className="col-md-4 d-flex flex-column justify-content-end">
+                  <div className="d-grid gap-2">
+                    <Button
+                      variant="primary"
+                      onClick={handleAddCourse}
+                      id="wd-add-new-course-click"
+                      className="mb-2"
+                    >
+                      <i className="fas fa-plus me-2"></i>
+                      Add Course
+                    </Button>
+                    <Button
+                      variant="warning"
+                      onClick={updateCourse}
+                      id="wd-update-course-click"
+                    >
+                      <i className="fas fa-edit me-2"></i>
+                      Update Course
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )}
       <div className="d-flex justify-content-between align-items-center">

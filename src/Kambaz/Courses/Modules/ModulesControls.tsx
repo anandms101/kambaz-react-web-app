@@ -1,6 +1,7 @@
-import { FaPlus, FaXmark } from "react-icons/fa6";
+import { FaPlus, FaEye, FaCompress } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
-import { Button, Dropdown } from "react-bootstrap";
+import { Button, Dropdown, ButtonGroup } from "react-bootstrap";
 import ModuleEditor from "./ModuleEditor";
 import { useState } from "react";
 
@@ -11,13 +12,20 @@ export default function ModulesControls({ moduleName, setModuleName, addModule }
   const handleShow = () => setShow(true);
 
   return (
-    <div id="wd-modules-controls" className="text-nowrap">
-      <Button variant="danger" onClick={handleShow} size="lg" className="me-1 float-end" id="wd-add-module-btn">
-        <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-        Module
-      </Button>
-      <Dropdown className="float-end me-2">
-        <Dropdown.Toggle variant="secondary" size="lg" id="wd-publish-all-btn">
+    <div id="wd-modules-controls" className="d-flex justify-content-end gap-2 mb-3">
+      <ButtonGroup>
+        <Button variant="outline-secondary" size="lg">
+          <FaEye className="me-2" />
+          View Progress
+        </Button>
+        <Button variant="outline-secondary" size="lg">
+          <FaCompress className="me-2" />
+          Collapse All
+        </Button>
+      </ButtonGroup>
+
+      <Dropdown>
+        <Dropdown.Toggle variant="outline-primary" size="lg" id="wd-publish-all-btn">
           <GreenCheckmark /> Publish All
         </Dropdown.Toggle>
         <Dropdown.Menu>
@@ -36,14 +44,25 @@ export default function ModulesControls({ moduleName, setModuleName, addModule }
         </Dropdown.Menu>
       </Dropdown>
 
-      <Button variant="light" size="lg" className="me-1 float-end" id="wd-add-module-btn">
-        View Progress
+      <Button 
+        variant="primary" 
+        onClick={handleShow} 
+        size="lg" 
+        id="wd-add-module-btn"
+        className="shadow-sm"
+      >
+        <FaPlus className="me-2" />
+        Add Module
       </Button>
-      <Button variant="light" size="lg" className="me-1 float-end" id="wd-add-module-btn">
-        Collapse All
-      </Button>
-      <ModuleEditor show={show} handleClose={handleClose} dialogTitle="Add Module"
-        moduleName={moduleName} setModuleName={setModuleName} addModule={addModule} />
+
+      <ModuleEditor 
+        show={show} 
+        handleClose={handleClose} 
+        dialogTitle="Add Module"
+        moduleName={moduleName} 
+        setModuleName={setModuleName} 
+        addModule={addModule} 
+      />
     </div>
   );
 }

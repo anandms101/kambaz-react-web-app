@@ -79,7 +79,7 @@ export default function Assignments() {
                     {/* Assignment title - no longer a link since we have edit button */}
                     <strong className="d-block">{assignment.title}</strong>
                     <span className="d-block">
-                      <span style={{ color: '#DC3545' }}>Multiple Modules</span> | <b>Available From </b> {assignment.available} | <b>Available Until </b> {assignment.until} 
+                      <span style={{ color: '#DC3545' }}>Multiple Modules</span> | <b>Available From </b> {assignment.not_available_until || assignment.available} | <b>Available Until </b> {assignment.until} 
                     </span>
                     <span className="d-block"> <b>Due </b> {assignment.due} | {assignment.points}pts</span>
                   </div>

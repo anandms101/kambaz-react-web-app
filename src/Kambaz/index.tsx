@@ -29,12 +29,18 @@ export default function Kambaz() {
 
   const findCoursesForUser = useCallback(async () => {
     try {
-      const userCourses = await userClient.findMyCourses();
+      let userCourses;
+      // Faculty should see all courses, students see only enrolled courses
+      if (currentUser?.role === "FACULTY" || currentUser?.role === "ADMIN") {
+        userCourses = await courseClient.fetchAllCourses();
+      } else {
+        userCourses = await userClient.findMyCourses();
+      }
       setCourses(userCourses);
     } catch (error) {
       console.error("Error fetching user courses:", error);
     }
-  }, []);
+  }, [currentUser?.role]);
 
   const updateEnrollment = useCallback(async (courseId: string, enrolled: boolean) => {
     try {
@@ -76,7 +82,8 @@ export default function Kambaz() {
 
   const addCourse = async () => {
     const newCourse = await courseClient.addCourse(course);
-    setCourses([...courses, newCourse]);
+    // Refresh the courses list to include the new course
+    await findCoursesForUser();
     // Reset the course form after adding
     setCourse({
       _id: "1234",
@@ -91,20 +98,14 @@ export default function Kambaz() {
 
   const deleteCourse = async (courseId: string) => {
     await courseClient.deleteCourse(courseId);
-    setCourses(courses.filter((course) => course._id !== courseId));
+    // Refresh the courses list after deletion
+    await findCoursesForUser();
   };
 
   const updateCourse = async () => {
     await courseClient.updateCourse(course);
-    setCourses(
-      courses.map((c) => {
-        if (c._id === course._id) {
-          return course;
-        } else {
-          return c;
-        }
-      })
-    );
+    // Refresh the courses list after update
+    await findCoursesForUser();
   };
 
   useEffect(() => {

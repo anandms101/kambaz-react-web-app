@@ -22,7 +22,13 @@ export default function AssignmentEditor() {
 
   // Initialize assignment state properly for new vs existing assignments
   const [assignment, setAssignment] = useState<any>(
-    currentAssignment || {
+    currentAssignment ? {
+      ...currentAssignment,
+      // Map database field 'not_available_until' to frontend field 'from'
+      from: currentAssignment.not_available_until || currentAssignment.available || getDefaultDateTime(),
+      // Map database field 'available' to frontend field 'from' if not_available_until doesn't exist
+      available: currentAssignment.not_available_until || currentAssignment.available
+    } : {
       title: "",
       description: "",
       points: 100,
@@ -127,46 +133,66 @@ export default function AssignmentEditor() {
 
   return (
     <div id="wd-assignments-editor" className="container mt-4">
-      <h3>{aid ? "Edit Assignment" : "Add New Assignment"}</h3>
+      <h3 className="mb-4">
+        <i className={`fas fa-${aid ? 'edit' : 'plus'} me-2`}></i>
+        {aid ? "Edit Assignment" : "Add New Assignment"}
+      </h3>
       <Form>
         {/* Assignment Name */}
         <Form.Group className="row mb-3" controlId="wd-name">
-          <Form.Label className="col-md-3 col-form-label text-md-end">Assignment Name *</Form.Label>
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-file-alt me-2"></i>
+            Assignment Name *
+          </Form.Label>
           <div className="col-md-9">
             <Form.Control
               type="text"
               value={assignmentName}
               onChange={(e) => handleInputChange('title', e.target.value)}
-              placeholder="New Assignment"
+              placeholder="Enter assignment name"
               isInvalid={!!errors.title}
+              className={errors.title ? 'is-invalid' : ''}
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.title}
-            </Form.Control.Feedback>
+            {errors.title && (
+              <div className="invalid-feedback d-block">
+                <i className="fas fa-times-circle me-1"></i>
+                {errors.title}
+              </div>
+            )}
           </div>
         </Form.Group>
 
         {/* Assignment Description */}
         <Form.Group className="row mb-3" controlId="wd-description">
-          <Form.Label className="col-md-3 col-form-label text-md-end">New Assignment Description *</Form.Label>
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-align-left me-2"></i>
+            Assignment Description *
+          </Form.Label>
           <div className="col-md-9">
             <Form.Control
               as="textarea"
               rows={4}
               value={description}
               onChange={(e) => handleInputChange('description', e.target.value)}
-              placeholder="Enter assignment description"
+              placeholder="Enter detailed assignment description"
               isInvalid={!!errors.description}
+              className={errors.description ? 'is-invalid' : ''}
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.description}
-            </Form.Control.Feedback>
+            {errors.description && (
+              <div className="invalid-feedback d-block">
+                <i className="fas fa-times-circle me-1"></i>
+                {errors.description}
+              </div>
+            )}
           </div>
         </Form.Group>
 
         {/* Points */}
         <Form.Group className="row mb-3" controlId="wd-points">
-          <Form.Label className="col-md-3 col-form-label text-md-end">Points *</Form.Label>
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-star me-2"></i>
+            Points *
+          </Form.Label>
           <div className="col-md-9">
             <Form.Control
               type="number"
@@ -175,16 +201,23 @@ export default function AssignmentEditor() {
               placeholder="100"
               min="1"
               isInvalid={!!errors.points}
+              className={errors.points ? 'is-invalid' : ''}
             />
-            <Form.Control.Feedback type="invalid">
-              {errors.points}
-            </Form.Control.Feedback>
+            {errors.points && (
+              <div className="invalid-feedback d-block">
+                <i className="fas fa-times-circle me-1"></i>
+                {errors.points}
+              </div>
+            )}
           </div>
         </Form.Group>
 
         {/* Assignment Group */}
         <Form.Group className="row mb-3" controlId="wd-assign-group">
-          <Form.Label className="col-md-3 col-form-label text-md-end">Assignment Group</Form.Label>
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-folder me-2"></i>
+            Assignment Group
+          </Form.Label>
           <div className="col-md-9">
             <Form.Select
               value={assignment?.assignment_group || "ASSIGNMENTS"}
@@ -200,7 +233,10 @@ export default function AssignmentEditor() {
 
         {/* Display Grade As */}
         <Form.Group className="row mb-3" controlId="wd-display-grade-as">
-          <Form.Label className="col-md-3 col-form-label text-md-end">Display Grade As</Form.Label>
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-chart-bar me-2"></i>
+            Display Grade As
+          </Form.Label>
           <div className="col-md-9">
             <Form.Select
               value={assignment?.display_grade_as || "Percentage"}
@@ -215,23 +251,34 @@ export default function AssignmentEditor() {
 
         {/* Submission Type */}
         <Form.Group className="row mb-3" controlId="wd-submission-type">
-          <Form.Label className="col-md-3 col-form-label text-md-end">Submission Type</Form.Label>
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-upload me-2"></i>
+            Submission Type
+          </Form.Label>
           <div className="col-md-9">
             <Form.Select
               value={assignment?.submission_type || "Online"}
               onChange={(e) => handleInputChange('submission_type', e.target.value)}
             >
               <option value="Online">Online</option>
-              <option value="In Person">In Person</option>
+              <option value="File Upload">File Upload</option>
+              <option value="Text Entry">Text Entry</option>
+              <option value="Website URL">Website URL</option>
             </Form.Select>
           </div>
         </Form.Group>
 
         {/* Online Entry Options */}
         <Form.Group className="row mb-3">
-          <Form.Label className="col-md-3 col-form-label text-md-end"></Form.Label>
-          <div className="col-md-9 border p-3 rounded">
-            <div className="mb-2 fw-bold">Online Entry Options</div>
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-cog me-2"></i>
+            Entry Options
+          </Form.Label>
+          <div className="col-md-9 border p-3 rounded bg-light">
+            <div className="mb-2 fw-bold">
+              <i className="fas fa-list-check me-2"></i>
+              Online Entry Options
+            </div>
             <Form.Check
               type="checkbox"
               id="checkbox1"
@@ -265,67 +312,87 @@ export default function AssignmentEditor() {
 
         {/* Assign Section */}
         <Form.Group className="row mb-4">
-          <Form.Label className="col-md-3 col-form-label text-md-end">Assign</Form.Label>
-          <div className="col-md-9 border p-3 rounded">
+          <Form.Label className="col-md-3 col-form-label text-md-end">
+            <i className="fas fa-users me-2"></i>
+            Assign
+          </Form.Label>
+          <div className="col-md-9 border p-3 rounded bg-light">
             <div className="mb-3">
-              <Form.Label className="fw-bold">Assign to</Form.Label>
+              <Form.Label className="fw-bold">
+                <i className="fas fa-user-check me-2"></i>
+                Assign to
+              </Form.Label>
               <Form.Control
                 type="text"
                 value={assignment?.assign_to || "Everyone"}
                 onChange={(e) => handleInputChange('assign_to', e.target.value)}
                 id="wd-assign-to"
+                placeholder="Everyone"
               />
             </div>
             <div className="mb-3">
-              <Form.Label className="fw-bold">Due *</Form.Label>
+              <Form.Label className="fw-bold">
+                <i className="fas fa-calendar-times me-2"></i>
+                Due *
+              </Form.Label>
               <div className="d-flex align-items-center">
                 <Form.Control
                   type="datetime-local"
                   value={dueDate}
                   onChange={(e) => handleInputChange('due', e.target.value)}
-                  className="me-2"
+                  id="wd-due-date"
                   isInvalid={!!errors.due}
+                  className={errors.due ? 'is-invalid' : ''}
                 />
-                <i className="fas fa-calendar"></i>
-                <i className="fas fa-clock ms-2"></i>
-              </div>
-              {errors.due && (
-                <div className="text-danger small mt-1">{errors.due}</div>
-              )}
-            </div>
-            <div className="d-flex gap-3">
-              <div className="mb-3 flex-fill">
-                <Form.Label className="fw-bold">Available from *</Form.Label>
-                <div className="d-flex align-items-center">
-                  <Form.Control
-                    type="datetime-local"
-                    value={availableDate}
-                    onChange={(e) => handleInputChange('from', e.target.value)}
-                    className="me-2"
-                    isInvalid={!!errors.from}
-                  />
-                  <i className="fas fa-calendar"></i>
-                  <i className="fas fa-clock ms-2"></i>
-                </div>
-                {errors.from && (
-                  <div className="text-danger small mt-1">{errors.from}</div>
+                {errors.due && (
+                  <div className="invalid-feedback d-block mt-1">
+                    <i className="fas fa-times-circle me-1"></i>
+                    {errors.due}
+                  </div>
                 )}
               </div>
-              <div className="mb-3 flex-fill">
-                <Form.Label className="fw-bold">Until *</Form.Label>
-                <div className="d-flex align-items-center">
-                  <Form.Control
-                    type="datetime-local"
-                    value={untilDate}
-                    onChange={(e) => handleInputChange('until', e.target.value)}
-                    className="me-2"
-                    isInvalid={!!errors.until}
-                  />
-                  <i className="fas fa-calendar"></i>
-                  <i className="fas fa-clock ms-2"></i>
-                </div>
+            </div>
+            <div className="mb-3">
+              <Form.Label className="fw-bold">
+                <i className="fas fa-calendar-plus me-2"></i>
+                Available from *
+              </Form.Label>
+              <div className="d-flex align-items-center">
+                <Form.Control
+                  type="datetime-local"
+                  value={availableDate}
+                  onChange={(e) => handleInputChange('from', e.target.value)}
+                  id="wd-from-date"
+                  isInvalid={!!errors.from}
+                  className={errors.from ? 'is-invalid' : ''}
+                />
+                {errors.from && (
+                  <div className="invalid-feedback d-block mt-1">
+                    <i className="fas fa-times-circle me-1"></i>
+                    {errors.from}
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="mb-3">
+              <Form.Label className="fw-bold">
+                <i className="fas fa-calendar-minus me-2"></i>
+                Until *
+              </Form.Label>
+              <div className="d-flex align-items-center">
+                <Form.Control
+                  type="datetime-local"
+                  value={untilDate}
+                  onChange={(e) => handleInputChange('until', e.target.value)}
+                  id="wd-until-date"
+                  isInvalid={!!errors.until}
+                  className={errors.until ? 'is-invalid' : ''}
+                />
                 {errors.until && (
-                  <div className="text-danger small mt-1">{errors.until}</div>
+                  <div className="invalid-feedback d-block mt-1">
+                    <i className="fas fa-times-circle me-1"></i>
+                    {errors.until}
+                  </div>
                 )}
               </div>
             </div>
@@ -336,15 +403,28 @@ export default function AssignmentEditor() {
         <div className="row">
           <div className="col text-end">
             <Link to={`/Kambaz/Courses/${cid}/Assignments`} className="me-2">
-              <Button variant="secondary" size="lg">Cancel</Button>
+              <Button variant="secondary" size="lg">
+                <i className="fas fa-times me-2"></i>
+                Cancel
+              </Button>
             </Link>
             <Button
-              variant="danger"
+              variant="primary"
               size="lg"
               onClick={handleSave}
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Saving..." : "Save"}
+              {isSubmitting ? (
+                <>
+                  <i className="fas fa-spinner fa-spin me-2"></i>
+                  Saving...
+                </>
+              ) : (
+                <>
+                  <i className="fas fa-save me-2"></i>
+                  Save Assignment
+                </>
+              )}
             </Button>
           </div>
         </div>
