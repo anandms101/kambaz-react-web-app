@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Table, Button, Modal, Form, Badge } from "react-bootstrap";
-import { FaPlus, FaEdit, FaTrash, FaUserCircle } from "react-icons/fa";
+import { FaPlus, FaTrash, FaUserCircle } from "react-icons/fa";
 import * as peopleClient from "./Client";
 
 export default function PeopleTable() {
@@ -25,7 +25,7 @@ export default function PeopleTable() {
             setError(null);
             const courseUsers = await peopleClient.findUsersForCourse(cid!);
             // Filter out any null or undefined users and ensure they have required properties
-            const validUsers = courseUsers.filter(user => 
+            const validUsers = courseUsers.filter((user: any) => 
                 user !== null && 
                 user !== undefined && 
                 typeof user === 'object'
@@ -44,7 +44,7 @@ export default function PeopleTable() {
         try {
             const allUsersData = await peopleClient.findAllUsers();
             // Filter out any null or undefined users and ensure they have required properties
-            const validUsers = allUsersData.filter(user => 
+            const validUsers = allUsersData.filter((user: any) => 
                 user !== null && 
                 user !== undefined && 
                 typeof user === 'object'
