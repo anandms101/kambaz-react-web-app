@@ -45,14 +45,14 @@ export default function Session({ children }: { children: any }) {
   }, []);
 
   // If we have a currentUser in Redux but session check failed, 
-  // it might be a timing issue after signup - retry multiple times
+  // it might be a timing issue after signup - retry once quickly
   useEffect(() => {
-    if (!pending && !currentUser && retryCount < 2) {
+    if (!pending && !currentUser && retryCount < 1) {
       const timer = setTimeout(() => {
         setRetryCount(prev => prev + 1);
         setPending(true);
         fetchProfile();
-      }, 3000); // Wait 3 seconds before retry
+      }, 500); // Reduced to 500ms for faster retry
       
       return () => clearTimeout(timer);
     }

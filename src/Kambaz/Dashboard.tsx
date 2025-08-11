@@ -1,7 +1,6 @@
 import { Button, Card, Col, Row, Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleShowAllEnrollments } from "./reducer";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function Dashboard(
@@ -13,6 +12,8 @@ export default function Dashboard(
     deleteCourse,
     updateCourse,
     updateEnrollment,
+    enrolling,
+    setEnrolling,
   }: {
     courses: any[];
     course: any;
@@ -21,16 +22,21 @@ export default function Dashboard(
     deleteCourse: (course: any) => void;
     updateCourse: () => void;
     updateEnrollment: (courseId: string, enrolled: boolean) => void;
+    enrolling: boolean;
+    setEnrolling: (enrolling: boolean) => void;
   }
 ) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const { enrollments, showAllEnrollments } = useSelector((state: any) => state.enrollmentReducer);
+  const { enrollments } = useSelector((state: any) => state.enrollmentReducer);
   const isFaculty = currentUser.role === "FACULTY";
   const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [newlyAddedCourse, setNewlyAddedCourse] = useState<any>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [courseToDelete, setCourseToDelete] = useState<any>(null);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [updatedCourse, setUpdatedCourse] = useState<any>(null);
 
   const handleAddCourse = async () => {
     try {
@@ -40,6 +46,44 @@ export default function Dashboard(
     } catch (error) {
       console.error("Error adding course:", error);
     }
+  };
+
+  const handleDeleteClick = (course: any) => {
+    setCourseToDelete(course);
+    setShowDeleteModal(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (courseToDelete) {
+      try {
+        await deleteCourse(courseToDelete._id);
+        setShowDeleteModal(false);
+        setCourseToDelete(null);
+      } catch (error) {
+        console.error("Error deleting course:", error);
+      }
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    setShowDeleteModal(false);
+    setCourseToDelete(null);
+  };
+
+  const handleUpdateCourse = async () => {
+    try {
+      await updateCourse();
+      setUpdatedCourse(course);
+      setShowUpdateModal(true);
+    } catch (error) {
+      console.error("Error updating course:", error);
+    }
+  };
+
+  const handleEditClick = (course: any) => {
+    setCourse(course);
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -97,7 +141,7 @@ export default function Dashboard(
                     </Button>
                     <Button
                       variant="warning"
-                      onClick={updateCourse}
+                      onClick={handleUpdateCourse}
                       id="wd-update-course-click"
                     >
                       <i className="fas fa-edit me-2"></i>
@@ -111,34 +155,26 @@ export default function Dashboard(
         </>
       )}
       <div className="d-flex justify-content-between align-items-center">
-        <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2>
+        <h2 id="wd-dashboard-published">
+          {enrolling ? "All Courses" : "My Courses"} ({courses.length})
+        </h2>
         <Button 
-          variant={showAllEnrollments ? "primary" : "outline-primary"}
-          onClick={() => dispatch(toggleShowAllEnrollments())}
+          variant="primary"
+          onClick={() => setEnrolling(!enrolling)}
           className="d-flex align-items-center gap-2"
         >
-          <i className={`fas fa-${showAllEnrollments ? 'eye' : 'eye-slash'}`}></i>
-          {showAllEnrollments ? "Show Enrolled Only" : "Show All Courses"}
+          {enrolling ? "My Courses" : "All Courses"}
         </Button>
       </div>
       <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={2} lg={4} xl={5} className="gap-4">
-          {courses
-            .filter((course) =>
-              showAllEnrollments ||
-              enrollments.some(
-                (enrollment: any) =>
-                  enrollment.user === currentUser._id &&
-                  enrollment.course === course._id
-              )
-            )
-            .map((course) => {
-              const isEnrolled = enrollments.some(
-                (enrollment: any) =>
-                  enrollment.user === currentUser._id &&
-                  enrollment.course === course._id
-              );
+          {courses.map((course) => {
+            const isEnrolled = course.enrolled || enrollments.some(
+              (enrollment: any) =>
+                enrollment.user === currentUser._id &&
+                enrollment.course === course._id
+            );
               return (
                 <Col
                   key={course._id}
@@ -188,7 +224,7 @@ export default function Dashboard(
                           <button
                             onClick={(event) => {
                               event.preventDefault();
-                              deleteCourse(course._id);
+                              handleDeleteClick(course);
                             }}
                             className="btn btn-danger float-end"
                             id="wd-delete-course-click"
@@ -199,7 +235,7 @@ export default function Dashboard(
                             id="wd-edit-course-click"
                             onClick={(event) => {
                               event.preventDefault();
-                              setCourse(course);
+                              handleEditClick(course);
                             }}
                             className="btn btn-warning me-2 float-end"
                           >
@@ -207,16 +243,18 @@ export default function Dashboard(
                           </button>
                         </>
                       )}
-                      <Button
-                        variant={isEnrolled ? "danger" : "success"}
-                        className="float-end me-2"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          updateEnrollment(course._id, !isEnrolled);
-                        }}
-                      >
-                        {isEnrolled ? "Unenroll" : "Enroll"}
-                      </Button>
+                      {enrolling && (
+                        <Button
+                          variant={isEnrolled ? "danger" : "success"}
+                          className="float-end me-2"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            updateEnrollment(course._id, !isEnrolled);
+                          }}
+                        >
+                          {isEnrolled ? "Unenroll" : "Enroll"}
+                        </Button>
+                      )}
                     </Card.Body>
                   </Card>
                 </Col>
@@ -262,6 +300,80 @@ export default function Dashboard(
               // Navigate to the new course using React Router
               if (newlyAddedCourse?._id) {
                 navigate(`/Kambaz/Courses/${newlyAddedCourse._id}/Home`);
+              }
+            }}
+          >
+            Go to Course
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Delete Confirmation Modal */}
+      <Modal show={showDeleteModal} onHide={handleDeleteCancel} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Course</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="text-center">
+            <i className="fas fa-exclamation-triangle text-warning" style={{ fontSize: "3rem" }}></i>
+            <h4 className="mt-3">Are you sure?</h4>
+            <p className="text-muted">
+              You are about to delete the course: <strong>{courseToDelete?.name}</strong>
+            </p>
+            <p className="text-danger">
+              <i className="fas fa-info-circle me-2"></i>
+              This action cannot be undone. All course data, modules, and assignments will be permanently deleted.
+            </p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleDeleteCancel}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDeleteConfirm}>
+            <i className="fas fa-trash me-2"></i>
+            Delete Course
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Course Updated Success Modal */}
+      <Modal show={showUpdateModal} onHide={() => setShowUpdateModal(false)} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Course Updated Successfully!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="text-center">
+            <i className="fas fa-check-circle text-success" style={{ fontSize: "3rem" }}></i>
+            <h4 className="mt-3">{updatedCourse?.name || "Course"}</h4>
+            <p className="text-muted">{updatedCourse?.description || "Course description"}</p>
+            <div className="row text-start">
+              <div className="col-6">
+                <strong>Course Number:</strong> {updatedCourse?.number || "N/A"}
+              </div>
+              <div className="col-6">
+                <strong>Start Date:</strong> {updatedCourse?.startDate || "N/A"}
+              </div>
+              <div className="col-6">
+                <strong>End Date:</strong> {updatedCourse?.endDate || "N/A"}
+              </div>
+              <div className="col-6">
+                <strong>Course ID:</strong> {updatedCourse?._id || "N/A"}
+              </div>
+            </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowUpdateModal(false)}>
+            Close
+          </Button>
+          <Button 
+            variant="primary" 
+            onClick={() => {
+              setShowUpdateModal(false);
+              // Navigate to the updated course using React Router
+              if (updatedCourse?._id) {
+                navigate(`/Kambaz/Courses/${updatedCourse._id}/Home`);
               }
             }}
           >

@@ -50,9 +50,6 @@ export default function Signin() {
       const enrollments = await client.getEnrollments();
       dispatch(setEnrollments(enrollments));
       
-      // Add a delay to ensure session is established
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
       navigate("/Kambaz/Dashboard");
     } catch (err: any) {
       setError(err.response?.data?.message || "Signin failed. Please try again.");
