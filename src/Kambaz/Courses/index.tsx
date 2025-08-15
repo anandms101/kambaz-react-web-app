@@ -6,6 +6,13 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/Editor";
 import { FaAlignJustify } from "react-icons/fa";
 import PeopleTable from "./People/Table";
+import Quizzes from "../Quizzes";
+import QuizDetails from "../Quizzes/QuizDetails";
+import QuizEditor from "../Quizzes/QuizEditor";
+import QuizPreview from "../Quizzes/QuizPreview";
+import TakeQuiz from "../Quizzes/TakeQuiz";
+import QuizResults from "../Quizzes/QuizResults";
+import QuestionsEditor from "../Quizzes/QuestionsEditor";
 
 export default function Courses(
   { courses }: { courses: any[]; }
@@ -32,7 +39,13 @@ export default function Courses(
             <Route path="Assignments" element={<Assignments />} />
             <Route path="Assignments/Editor" element={<AssignmentEditor />} />
             <Route path="Assignments/:aid" element={<AssignmentEditor />} />
-            <Route path="Quizzes" element={<h2>Quizzes</h2>} />
+            <Route path="Quizzes" element={<Quizzes />} />
+            <Route path="Quizzes/:quizId" element={<QuizDetails />} />
+            <Route path="Quizzes/:quizId/Edit" element={<QuizEditor />} />
+            <Route path="Quizzes/:quizId/Preview" element={<QuizPreview />} />
+            <Route path="Quizzes/:quizId/Take" element={<TakeQuiz />} />
+            <Route path="Quizzes/:quizId/Results" element={<QuizResults />} />
+        <Route path="Quizzes/:quizId/Questions" element={<QuestionsEditor />} />
             <Route path="Grades" element={<h2>Grades</h2>} />
             <Route path="People" element={<PeopleTable />} />
           </Routes>

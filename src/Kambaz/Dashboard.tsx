@@ -170,11 +170,11 @@ export default function Dashboard(
       <div id="wd-dashboard-courses">
         <Row xs={1} md={2} lg={4} xl={5} className="gap-4">
           {courses.map((course) => {
-            const isEnrolled = course.enrolled || enrollments.some(
+            const isEnrolled = course.enrolled || (enrollments && enrollments.some(
               (enrollment: any) =>
                 enrollment.user === currentUser._id &&
                 enrollment.course === course._id
-            );
+            ));
               return (
                 <Col
                   key={course._id}

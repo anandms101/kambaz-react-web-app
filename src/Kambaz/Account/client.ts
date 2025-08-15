@@ -16,7 +16,7 @@ axiosWithCredentials.interceptors.response.use(
   }
 );
 
-export const REMOTE_SERVER = import.meta.env.VITE_REMOTE_SERVER;
+export const REMOTE_SERVER = import.meta.env.VITE_REMOTE_SERVER || "http://localhost:4002";
 export const USERS_API = `${REMOTE_SERVER}/api/users`;
 export const ENROLLMENTS_API = `${REMOTE_SERVER}/api/enrollments`;
 
