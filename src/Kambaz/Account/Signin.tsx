@@ -1,4 +1,4 @@
-import { Button, FormControl, Form } from "react-bootstrap";
+import { Button, FormControl, Form, Card } from "react-bootstrap";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setCurrentUser } from "./reducer";
@@ -66,8 +66,73 @@ export default function Signin() {
     }
   };
 
+  const TeamInformation = () => (
+    <Card className="mb-4 shadow-sm mt-4" style={{ maxWidth: 600, width: "100%" }}>
+      <Card.Header className="bg-primary text-white text-center">
+        <h5 className="mb-0">
+          <i className="fas fa-users me-2"></i>
+          Project Team Information
+        </h5>
+      </Card.Header>
+      <Card.Body>
+        <div className="row mb-3">
+          <div className="col-12">
+            <h6 className="text-muted mb-3">Team Members:</h6>
+            <div className="list-group list-group-flush">
+              <div className="list-group-item d-flex justify-content-between align-items-center px-0 border-0">
+                <div>
+                  <strong>Anand Mohan Singh</strong>
+                  <div className="small text-muted">CS5610 60924 Web Development SEC 01 Summer 2 2025</div>
+                </div>
+              </div>
+              <div className="list-group-item d-flex justify-content-between align-items-center px-0 border-0">
+                <div>
+                  <strong>Rahul Chinya Jagadeesha</strong>
+                  <div className="small text-muted">CS5610 60924 Web Development SEC 01 Summer 2 2025</div>
+                </div>
+              </div>
+              <div className="list-group-item d-flex justify-content-between align-items-center px-0 border-0">
+                <div>
+                  <strong>Nalini Singh</strong>
+                  <div className="small text-muted">CS5610 60924 Web Development SEC 01 Summer 2 2025</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="row">
+          <div className="col-md-6 mb-2">
+            <h6 className="text-muted mb-2">Frontend Repository:</h6>
+            <a 
+              href="https://github.com/anandms101/kambaz-react-web-app/tree/quizes" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn btn-outline-primary btn-sm w-100"
+            >
+              <i className="fab fa-github me-2"></i>
+              React Web App
+            </a>
+          </div>
+          <div className="col-md-6 mb-2">
+            <h6 className="text-muted mb-2">Backend Repository:</h6>
+            <a 
+              href="https://github.com/anandms101/kambaz-node-server-app-main/tree/quizes" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="btn btn-outline-success btn-sm w-100"
+            >
+              <i className="fab fa-github me-2"></i>
+              Node Server App
+            </a>
+          </div>
+        </div>
+      </Card.Body>
+    </Card>
+  );
+
   return (
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
+    <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: "100vh", padding: "2rem 0" }}>
       <div id="wd-signin-screen" style={{ maxWidth: 400, width: "100%" }}>
         <h1 className="text-center mb-4">
           <i className="fas fa-sign-in-alt me-2"></i>
@@ -150,6 +215,7 @@ export default function Signin() {
           </Link>
         </div>
       </div>
+      <TeamInformation />
     </div>
   );
 }
