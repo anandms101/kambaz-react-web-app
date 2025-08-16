@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.env.development
+final_build_fix.cjs
+fix_jsx_errors.cjs
+fix_remaining_errors.cjs
+fix_typescript_errors.js
+judingCriteria.txt
+QUIZZES_IMPLEMENTATION_TASKS.md
+WD KANBAS QUIZZES PROJECT REQUIREMENTS.md
+WD KANBAS QUIZZES PROJECT REQUIREMENTS.pdf
+.env
+.env.development

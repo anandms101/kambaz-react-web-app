@@ -52,8 +52,9 @@ export default function QuizResults() {
 
   const fetchAttempts = async () => {
     setLoadingAttempts(true);
+    const REMOTE_SERVER = import.meta.env.VITE_REMOTE_SERVER || "http://localhost:4002";
     try {
-      const response = await fetch(`http://localhost:4002/api/quizzes/${quizId}/attempts`, {
+      const response = await fetch(`${REMOTE_SERVER}/api/quizzes/${quizId}/attempts`, {
         credentials: 'include'
       });
       if (response.ok) {
