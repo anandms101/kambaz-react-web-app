@@ -38,6 +38,7 @@ export interface Question {
   options?: Array<{ text: string; isCorrect: boolean }>;
   correctAnswer?: boolean | string;
   correctAnswers?: string[];
+  blanks?: Array<{ id: string; answers: string[] }>;
   order: number;
   createdAt: string;
   updatedAt: string;

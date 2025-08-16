@@ -178,14 +178,46 @@ export default function QuizPreview() {
         );
 
       case 'fill-blank':
-        return (
-          <Form.Control
-            type="text"
-            value={currentAnswer || ""}
-            onChange={(e) => handleAnswerChange(question._id, e.target.value)}
-            placeholder="Enter your answer"
-          />
-        );
+        // Handle both legacy single-blank and new multi-blank structure
+        if (question.blanks && question.blanks.length > 0) {
+          // New multi-blank structure
+          const blankAnswers = currentAnswer || {};
+          return (
+            <div>
+              <p className="text-muted mb-3">
+                <strong>Instructions:</strong> Fill in each blank with your answer.
+              </p>
+              {question.blanks.map((blank: any, blankIndex: number) => (
+                <div key={blank.id} className="mb-3">
+                  <Form.Label htmlFor={`${question._id}-${blank.id}`}>
+                    <strong>Blank {blankIndex + 1}:</strong>
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    id={`${question._id}-${blank.id}`}
+                    value={blankAnswers[blank.id] || ""}
+                    onChange={(e) => {
+                      const newAnswers = { ...blankAnswers, [blank.id]: e.target.value };
+                      handleAnswerChange(question._id, newAnswers);
+                    }}
+                    placeholder={`Enter answer for blank ${blankIndex + 1}`}
+                    className="mb-2"
+                  />
+                </div>
+              ))}
+            </div>
+          );
+        } else {
+          // Legacy single-blank structure
+          return (
+            <Form.Control
+              type="text"
+              value={currentAnswer || ""}
+              onChange={(e) => handleAnswerChange(question._id, e.target.value)}
+              placeholder="Enter your answer"
+            />
+          );
+        }
 
       default:
         return <p>Unsupported question type</p>;

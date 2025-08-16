@@ -24,7 +24,8 @@ import {
   FaCheck,
   FaTimes,
   FaExclamationTriangle,
-  FaSave
+  FaSave,
+  FaEye
 } from "react-icons/fa";
 import * as client from "./client";
 
@@ -202,10 +203,7 @@ export default function TakeQuiz() {
       
       setScore(result.score);
       setShowResults(true);
-      // Navigate to results page after a short delay
-      setTimeout(() => {
-        navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Results`);
-      }, 3000);
+      // Results will be shown inline - user can navigate manually
     } catch (error: any) {
       console.error("Error submitting quiz:", error);
       setErrorTitle("Error Submitting Quiz");
@@ -267,14 +265,46 @@ export default function TakeQuiz() {
         );
 
       case 'fill-blank':
-        return (
-          <Form.Control
-            type="text"
-            value={currentAnswer || ""}
-            onChange={(e) => handleAnswerChange(question._id, e.target.value)}
-            placeholder="Enter your answer"
-          />
-        );
+        // Handle both legacy single-blank and new multi-blank structure
+        if (question.blanks && question.blanks.length > 0) {
+          // New multi-blank structure
+          const blankAnswers = currentAnswer || {};
+          return (
+            <div>
+              <p className="text-muted mb-3">
+                <strong>Instructions:</strong> Fill in each blank with your answer.
+              </p>
+              {question.blanks.map((blank: any, blankIndex: number) => (
+                <div key={blank.id} className="mb-3">
+                  <Form.Label htmlFor={`${question._id}-${blank.id}`}>
+                    <strong>Blank {blankIndex + 1}:</strong>
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    id={`${question._id}-${blank.id}`}
+                    value={blankAnswers[blank.id] || ""}
+                    onChange={(e) => {
+                      const newAnswers = { ...blankAnswers, [blank.id]: e.target.value };
+                      handleAnswerChange(question._id, newAnswers);
+                    }}
+                    placeholder={`Enter answer for blank ${blankIndex + 1}`}
+                    className="mb-2"
+                  />
+                </div>
+              ))}
+            </div>
+          );
+        } else {
+          // Legacy single-blank structure
+          return (
+            <Form.Control
+              type="text"
+              value={currentAnswer || ""}
+              onChange={(e) => handleAnswerChange(question._id, e.target.value)}
+              placeholder="Enter your answer"
+            />
+          );
+        }
 
       default:
         return <p>Unsupported question type</p>;
@@ -310,7 +340,8 @@ export default function TakeQuiz() {
             <div>
               <h5>Question Review</h5>
               {questions.map((question: any, index: number) => {
-                const answer = answers[question._id];
+                const attemptAnswer = currentAttempt.answers?.find((a: any) => a.questionId === question._id);
+                const answer = attemptAnswer?.answer || answers[question._id];
                 let isCorrect = false;
                 let correctAnswer = "";
 
@@ -318,15 +349,15 @@ export default function TakeQuiz() {
                   case 'multiple-choice':
                     const correctOption = question.options.find((opt: any) => opt.isCorrect);
                     correctAnswer = correctOption?.text || "";
-                    isCorrect = answer === correctAnswer;
+                    isCorrect = attemptAnswer?.isCorrect || answer === correctAnswer;
                     break;
                   case 'true-false':
                     correctAnswer = question.correctAnswer ? "True" : "False";
-                    isCorrect = answer === question.correctAnswer;
+                    isCorrect = attemptAnswer?.isCorrect || answer === question.correctAnswer;
                     break;
                   case 'fill-blank':
                     correctAnswer = question.correctAnswers.join(" or ");
-                    isCorrect = question.correctAnswers.some((correct: string) => 
+                    isCorrect = attemptAnswer?.isCorrect || question.correctAnswers.some((correct: string) => 
                       correct.toLowerCase() === answer?.toLowerCase()
                     );
                     break;
@@ -338,7 +369,15 @@ export default function TakeQuiz() {
                       <div className="flex-grow-1">
                         <h6>Question {index + 1}: {question.title}</h6>
                         <p className="mb-2">{question.questionText}</p>
-                        <p><strong>Your Answer:</strong> {answer || "No answer"}</p>
+                        <p><strong>Your Answer:</strong> {
+                          typeof answer === 'object' && answer !== null
+                            ? Object.entries(answer).map(([blankId, answerText], idx) => (
+                                <span key={blankId}>
+                                  {idx > 0 ? ', ' : ''}Blank {idx + 1}: {answerText as string}
+                                </span>
+                              ))
+                            : (answer || "No answer")
+                        }</p>
                         <p><strong>Correct Answer:</strong> {correctAnswer}</p>
                       </div>
                       <div>
@@ -390,10 +429,16 @@ export default function TakeQuiz() {
       <div className="take-quiz-container">
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2>Quiz Results: {currentQuiz.title}</h2>
-          <Button variant="secondary" onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes`)}>
-            <FaArrowLeft className="me-2" />
-            Back to Quizzes
-          </Button>
+          <div className="d-flex gap-2">
+            <Button variant="outline-primary" onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}/Results`)}>
+              <FaEye className="me-2" />
+              View Detailed Results
+            </Button>
+            <Button variant="secondary" onClick={() => navigate(`/Kambaz/Courses/${cid}/Quizzes`)}>
+              <FaArrowLeft className="me-2" />
+              Back to Quizzes
+            </Button>
+          </div>
         </div>
 
         {renderResults()}

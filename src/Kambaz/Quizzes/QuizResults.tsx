@@ -151,7 +151,7 @@ export default function QuizResults() {
                   const answer = attempt.answers?.find((a: any) => a.questionId === question._id);
                   let isCorrect = false;
                   let correctAnswer = "";
-                  let studentAnswer = answer?.answer || "No answer";
+                  let studentAnswer = answer?.answer !== undefined ? answer.answer : "No answer";
 
                   switch (question.questionType) {
                     case 'multiple-choice':
@@ -164,10 +164,35 @@ export default function QuizResults() {
                       isCorrect = studentAnswer === question.correctAnswer;
                       break;
                     case 'fill-blank':
-                      correctAnswer = question.correctAnswers.join(" or ");
-                      isCorrect = question.correctAnswers.some((correct: string) => 
-                        correct.toLowerCase() === studentAnswer?.toLowerCase()
-                      );
+                      // Handle both legacy single-blank and new multi-blank structure
+                      if (question.blanks && question.blanks.length > 0) {
+                        // New multi-blank structure with partial credit display
+                        const blankAnswers = studentAnswer || {};
+                        let correctBlanks = 0;
+                        let correctAnswersText = "";
+                        
+                        question.blanks.forEach((blank: any, blankIndex: number) => {
+                          const studentBlankAnswer = blankAnswers[blank.id] || "";
+                          const isBlankCorrect = blank.answers.some((correct: string) => 
+                            correct.toLowerCase() === studentBlankAnswer.toLowerCase()
+                          );
+                          if (isBlankCorrect) {
+                            correctBlanks++;
+                          }
+                          
+                          if (blankIndex > 0) correctAnswersText += "; ";
+                          correctAnswersText += `Blank ${blankIndex + 1}: ${blank.answers.join(" or ")}`;
+                        });
+                        
+                        correctAnswer = correctAnswersText;
+                        isCorrect = correctBlanks === question.blanks.length; // Fully correct only if all blanks are right
+                      } else {
+                        // Legacy single-blank structure
+                        correctAnswer = question.correctAnswers.join(" or ");
+                        isCorrect = question.correctAnswers.some((correct: string) => 
+                          correct.toLowerCase() === studentAnswer?.toLowerCase()
+                        );
+                      }
                       break;
                   }
 
@@ -186,9 +211,19 @@ export default function QuizResults() {
                       </Accordion.Header>
                       <Accordion.Body>
                         <p><strong>Question:</strong> {question.questionText}</p>
-                        <p><strong>Your Answer:</strong> {studentAnswer}</p>
+                        <p><strong>Your Answer:</strong> {
+                          typeof studentAnswer === 'object' && studentAnswer !== null
+                            ? Object.entries(studentAnswer).map(([blankId, answer], idx) => (
+                                <span key={blankId}>
+                                  {idx > 0 ? ', ' : ''}Blank {idx + 1}: {answer as string}
+                                </span>
+                              ))
+                            : (question.questionType === 'true-false' && typeof studentAnswer === 'boolean')
+                              ? (studentAnswer ? "True" : "False")
+                              : studentAnswer
+                        }</p>
                         <p><strong>Correct Answer:</strong> {correctAnswer}</p>
-                        <p><strong>Points Earned:</strong> {isCorrect ? question.points : 0}</p>
+                        <p><strong>Points Earned:</strong> {answer?.points || 0}</p>
                       </Accordion.Body>
                     </Accordion.Item>
                   );

@@ -50,15 +50,16 @@ export default function QuestionEditor({
 
   // Update state when question prop changes (for editing)
   useEffect(() => {
-    if (question) {
+    if (show && question) {
+      // When modal is shown and we have a question, populate the form
       setQuestionType(question.questionType || "multiple-choice");
       setTitle(question.title || "");
       setQuestionText(question.questionText || "");
       setPoints(question.points || 1);
       setOrder(question.order || 1);
       setQuestionData(question || {});
-    } else {
-      // Reset form for new question
+    } else if (show && !question) {
+      // When modal is shown for new question, reset form
       setQuestionType("multiple-choice");
       setTitle("");
       setQuestionText("");
@@ -66,12 +67,30 @@ export default function QuestionEditor({
       setOrder(1);
       setQuestionData({});
     }
-  }, [question]);
+  }, [show, question]);
 
   const handleSave = async () => {
     if (!title.trim() || !questionText.trim()) {
       setError("Title and question text are required");
       return;
+    }
+
+    // Validate fill-in-the-blank questions
+    if (questionType === 'fill-blank') {
+      const blanks = questionData.blanks || [];
+      if (blanks.length === 0) {
+        setError("At least one blank is required for fill-in-the-blank questions");
+        return;
+      }
+      
+      for (let i = 0; i < blanks.length; i++) {
+        const blank = blanks[i];
+        const validAnswers = blank.answers?.filter((a: string) => a.trim()) || [];
+        if (validAnswers.length === 0) {
+          setError(`Blank ${i + 1} must have at least one correct answer`);
+          return;
+        }
+      }
     }
 
     setIsSaving(true);
@@ -88,7 +107,8 @@ export default function QuestionEditor({
         order: parseInt(order.toString()) || 1,
         options: questionData.options || [],
         correctAnswer: questionData.correctAnswer,
-        correctAnswers: questionData.correctAnswers
+        correctAnswers: questionData.correctAnswers,
+        blanks: questionData.blanks || [] // Add support for multiple blanks
       };
 
       if (isEditing) {
@@ -99,8 +119,12 @@ export default function QuestionEditor({
 
       onQuestionSaved();
       handleClose();
-    } catch (error) {
-      setError("Failed to save question. Please try again.");
+    } catch (error: any) {
+      if (error.response?.status === 401) {
+        setError("Your session has expired. Please sign in again to continue.");
+      } else {
+        setError("Failed to save question. Please try again.");
+      }
       console.error("Error saving question:", error);
     } finally {
       setIsSaving(false);
@@ -108,16 +132,23 @@ export default function QuestionEditor({
   };
 
   const handleClose = () => {
-    // Reset form when closing
-    setTitle("");
-    setQuestionText("");
-    setPoints(1);
-    setOrder(1);
-    setQuestionData({});
-    setQuestionType("multiple-choice");
     setError("");
     onHide();
   };
+
+  // Reset form when modal is completely hidden
+  useEffect(() => {
+    if (!show) {
+      // Reset form when modal is closed
+      setTitle("");
+      setQuestionText("");
+      setPoints(1);
+      setOrder(1);
+      setQuestionData({});
+      setQuestionType("multiple-choice");
+      setError("");
+    }
+  }, [show]);
 
   const getQuestionTypeIcon = (type: string) => {
     switch (type) {

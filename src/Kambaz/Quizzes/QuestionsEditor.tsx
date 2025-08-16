@@ -205,11 +205,18 @@ export default function QuestionsEditor() {
                       </div>
                     )}
                     
-                    {question.questionType === 'fill-blank' && question.correctAnswers && (
+                    {question.questionType === 'fill-blank' && question.blanks && (
                       <div className="ms-3">
-                        <small className="text-muted">
-                          Correct Answers: <span className="fw-bold">{question.correctAnswers.join(", ")}</span>
-                        </small>
+                        <small className="text-muted">Blanks and Answers:</small>
+                        <div className="ms-3 mt-1">
+                          {question.blanks.map((blank: any, blankIndex: number) => (
+                            <div key={blank.id} className="mb-2">
+                              <small className="text-muted">
+                                <strong>Blank {blankIndex + 1}:</strong> {blank.answers.join(", ")}
+                              </small>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>

@@ -86,6 +86,7 @@ export const copyQuizWithQuestions = async (originalQuizId: string, newQuizData:
         options: question.options,
         correctAnswer: question.correctAnswer,
         correctAnswers: question.correctAnswers,
+        blanks: question.blanks,
         order: question.order
       };
       

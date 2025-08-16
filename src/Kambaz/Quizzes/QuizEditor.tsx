@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { 
   fetchQuizWithQuestionsAsync, 
+  createQuizAsync,
   updateQuizAsync,
   deleteQuestionAsync,
   type Quiz 
@@ -39,23 +40,46 @@ export default function QuizEditor() {
   const [editingQuestion, setEditingQuestion] = useState<any>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [questionToDelete, setQuestionToDelete] = useState<any>(null);
+  const [isNewQuiz, setIsNewQuiz] = useState(false);
 
   useEffect(() => {
-    if (quizId) {
+    if (quizId === "new") {
+      // Initialize with default data for new quiz
+      setIsNewQuiz(true);
+      const defaultQuizData = {
+        title: "New Quiz",
+        courseId: cid,
+        description: "",
+        quizType: "Graded Quiz" as const,
+        points: 0,
+        assignmentGroup: "Quizzes" as const,
+        shuffleAnswers: true,
+        timeLimit: 20,
+        multipleAttempts: false,
+        maxAttempts: 1,
+        showCorrectAnswers: true,
+        accessCode: "",
+        oneQuestionAtATime: true,
+        webcamRequired: false,
+        lockQuestionsAfterAnswering: false,
+        published: false
+      };
+      setFormData(defaultQuizData);
+    } else if (quizId) {
       dispatch(fetchQuizWithQuestionsAsync(quizId) as any);
     }
-  }, [dispatch, quizId]);
+  }, [dispatch, quizId, cid]);
 
   useEffect(() => {
-    if (currentQuiz) {
+    if (currentQuiz && !isNewQuiz) {
       setFormData(currentQuiz);
     }
-  }, [currentQuiz]);
+  }, [currentQuiz, isNewQuiz]);
 
   const isFaculty = currentUser?.role === "FACULTY" || currentUser?.role === "ADMIN";
   const isCreator = currentQuiz?.createdBy === currentUser?._id;
 
-  if (!isFaculty || !isCreator) {
+  if (!isFaculty || (!isNewQuiz && !isCreator)) {
     return (
       <Alert variant="danger">
         You don't have permission to edit this quiz.
@@ -71,22 +95,39 @@ export default function QuizEditor() {
   };
 
   const handleSave = async (publish: boolean = false) => {
-    if (!currentQuiz) return;
-
     setIsSaving(true);
     try {
-      const updatedQuiz = {
-        ...currentQuiz,
-        ...formData,
-        published: publish ? true : currentQuiz.published
-      };
-      
-      await dispatch(updateQuizAsync(updatedQuiz) as any).unwrap();
-      
-      if (publish) {
-        navigate(`/Kambaz/Courses/${cid}/Quizzes`);
+      if (isNewQuiz) {
+        // Create new quiz
+        const newQuizData = {
+          ...formData,
+          published: publish
+        };
+        const result = await dispatch(createQuizAsync(newQuizData) as any).unwrap();
+        
+        if (publish) {
+          navigate(`/Kambaz/Courses/${cid}/Quizzes`);
+        } else {
+          // Navigate to the newly created quiz editor
+          navigate(`/Kambaz/Courses/${cid}/Quizzes/${result._id}/Edit`);
+        }
       } else {
-        navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}`);
+        // Update existing quiz
+        if (!currentQuiz) return;
+        
+        const updatedQuiz = {
+          ...currentQuiz,
+          ...formData,
+          published: publish ? true : currentQuiz.published
+        };
+        
+        await dispatch(updateQuizAsync(updatedQuiz) as any).unwrap();
+        
+        if (publish) {
+          navigate(`/Kambaz/Courses/${cid}/Quizzes`);
+        } else {
+          navigate(`/Kambaz/Courses/${cid}/Quizzes/${quizId}`);
+        }
       }
     } catch (error) {
       console.error("Error saving quiz:", error);
@@ -100,14 +141,23 @@ export default function QuizEditor() {
   };
 
   const handleAddQuestion = () => {
+    if (isNewQuiz) {
+      alert("Please save the quiz first before adding questions.");
+      return;
+    }
     setEditingQuestion(null);
     setShowQuestionEditor(true);
   };
 
-
+  const handleEditQuestion = (question: any) => {
+    setEditingQuestion(question);
+    setShowQuestionEditor(true);
+  };
 
   const handleQuestionSaved = () => {
-    (dispatch as any)(fetchQuizWithQuestionsAsync(quizId! as any));
+    if (!isNewQuiz && quizId) {
+      (dispatch as any)(fetchQuizWithQuestionsAsync(quizId as any));
+    }
   };
 
   const handleDeleteQuestion = (question: any) => {
@@ -152,7 +202,7 @@ export default function QuizEditor() {
     );
   }
 
-  if (!currentQuiz) {
+  if (!currentQuiz && !isNewQuiz) {
     return (
       <Alert variant="warning">
         Quiz not found
@@ -163,7 +213,7 @@ export default function QuizEditor() {
   return (
     <div className="quiz-editor-container">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Edit Quiz: {currentQuiz.title}</h2>
+        <h2>{isNewQuiz ? "Create New Quiz" : `Edit Quiz: ${currentQuiz?.title}`}</h2>
       </div>
 
       <Tab.Container activeKey={activeTab} onSelect={(k) => setActiveTab(k || "details")}>
@@ -179,7 +229,7 @@ export default function QuizEditor() {
               <Nav.Item>
                 <Nav.Link eventKey="questions">
                   <FaPlus className="me-2" />
-                  Questions ({questions.length})
+                  Questions ({isNewQuiz ? 0 : questions.length})
                 </Nav.Link>
               </Nav.Item>
             </Nav>
@@ -462,9 +512,14 @@ export default function QuizEditor() {
                     </Button>
                   </div>
                   
-                  {questions.length === 0 ? (
+                  {(isNewQuiz || questions.length === 0) ? (
                     <div className="text-center py-5">
-                      <p className="text-muted">No questions added yet.</p>
+                      <p className="text-muted">
+                        {isNewQuiz 
+                          ? "Save the quiz first to start adding questions." 
+                          : "No questions added yet."
+                        }
+                      </p>
                     </div>
                   ) : (
                     <div className="questions-list">
@@ -483,10 +538,7 @@ export default function QuizEditor() {
                               <Button 
                                 variant="outline-primary" 
                                 size="sm"
-                                onClick={() => {
-                                  setEditingQuestion(question);
-                                  setShowQuestionEditor(true);
-                                }}
+                                onClick={() => handleEditQuestion(question)}
                               >
                                 <FaEdit />
                               </Button>
@@ -522,7 +574,7 @@ export default function QuizEditor() {
         >
           {isSaving ? "Saving..." : "Save"}
         </Button>
-        {!currentQuiz?.published && (
+        {(isNewQuiz || !currentQuiz?.published) && (
           <Button 
             variant="success" 
             onClick={() => handleSave(true)}
@@ -534,13 +586,15 @@ export default function QuizEditor() {
       </div>
 
       {/* Question Editor Modal */}
-      <QuestionEditor
-        show={showQuestionEditor}
-        onHide={() => setShowQuestionEditor(false)}
-        quizId={quizId!}
-        question={editingQuestion}
-        onQuestionSaved={handleQuestionSaved}
-      />
+      {!isNewQuiz && (
+        <QuestionEditor
+          show={showQuestionEditor}
+          onHide={() => setShowQuestionEditor(false)}
+          quizId={quizId!}
+          question={editingQuestion}
+          onQuestionSaved={handleQuestionSaved}
+        />
+      )}
 
       {/* Delete Confirmation Modal */}
       <Modal show={showDeleteModal} onHide={cancelDelete} centered>

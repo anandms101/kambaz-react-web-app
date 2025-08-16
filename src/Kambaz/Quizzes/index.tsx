@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { 
   fetchQuizzesForCourse, 
-  createQuizAsync, 
   deleteQuizAsync, 
   publishQuizAsync, 
   unpublishQuizAsync,
@@ -89,34 +88,10 @@ export default function Quizzes() {
     }
   });
 
-  const handleCreateQuiz = async () => {
+  const handleCreateQuiz = () => {
     if (cid) {
-      const quizData = {
-        title: "New Quiz", // Default name as per requirements
-        courseId: cid,
-        description: "",
-        quizType: "Graded Quiz" as const,
-        points: 0,
-        assignmentGroup: "Quizzes" as const,
-        shuffleAnswers: true,
-        timeLimit: 20,
-        multipleAttempts: false,
-        maxAttempts: 1,
-        showCorrectAnswers: true,
-        accessCode: "",
-        oneQuestionAtATime: true,
-        webcamRequired: false,
-        lockQuestionsAfterAnswering: false,
-        published: false
-      };
-
-      try {
-        const result = await dispatch(createQuizAsync(quizData) as any).unwrap();
-        // Navigate directly to quiz editor for editing (as per requirements)
-        navigate(`/Kambaz/Courses/${cid}/Quizzes/${result._id}/Edit`);
-      } catch (error) {
-        console.error("Failed to create quiz:", error);
-      }
+      // Navigate to quiz editor with "new" flag instead of creating quiz immediately
+      navigate(`/Kambaz/Courses/${cid}/Quizzes/new/Edit`);
     }
   };
 
