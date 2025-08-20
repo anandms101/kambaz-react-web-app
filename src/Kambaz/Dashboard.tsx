@@ -29,7 +29,7 @@ export default function Dashboard(
   const navigate = useNavigate();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { enrollments } = useSelector((state: any) => state.enrollmentReducer);
-  const isFaculty = currentUser.role === "FACULTY";
+  const isFaculty = currentUser?.role === "FACULTY";
   const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [newlyAddedCourse, setNewlyAddedCourse] = useState<any>(null);
@@ -85,6 +85,11 @@ export default function Dashboard(
     // Scroll to top of the page
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Don't render if currentUser is not loaded yet
+  if (!currentUser) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div id="wd-dashboard">
@@ -169,12 +174,14 @@ export default function Dashboard(
       <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={2} lg={4} xl={5} className="gap-4">
-          {courses.map((course) => {
-            const isEnrolled = course.enrolled || enrollments.some(
+          {courses && courses.map((course) => {
+            if (!course || !currentUser) return null;
+            
+            const isEnrolled = course.enrolled || (enrollments && enrollments.some(
               (enrollment: any) =>
                 enrollment.user === currentUser._id &&
                 enrollment.course === course._id
-            );
+            ));
               return (
                 <Col
                   key={course._id}
