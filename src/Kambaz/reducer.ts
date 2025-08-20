@@ -12,7 +12,7 @@ const enrollmentSlice = createSlice({
   initialState,
   reducers: {
     toggleEnrollment: (state, action: PayloadAction<{ userId: string, courseId: string }>) => {
-      const enrolled = state.enrollments.find((enrollment) => enrollment.user === action.payload.userId && enrollment.course === action.payload.courseId)
+      const enrolled = state.enrollments.find((enrollment) => enrollment && enrollment.user === action.payload.userId && enrollment.course === action.payload.courseId)
       if (enrolled) {
         state.enrollments = state.enrollments.filter((enrollment) => enrollment !== enrolled)
       }

@@ -113,7 +113,7 @@ export default function Dashboard(
                       Course Name
                     </label>
                     <input
-                      value={course.name}
+                      value={course?.name || ""}
                       className="form-control"
                       onChange={(e) => setCourse({ ...course, name: e.target.value })}
                       placeholder="Enter course name"
@@ -125,7 +125,7 @@ export default function Dashboard(
                       Course Description
                     </label>
                     <textarea
-                      value={course.description}
+                      value={course?.description || ""}
                       className="form-control"
                       rows={3}
                       onChange={(e) => setCourse({ ...course, description: e.target.value })}

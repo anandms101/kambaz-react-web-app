@@ -100,7 +100,7 @@ export default function PeopleTable() {
 
     // Filter out users already enrolled in this course
     const availableUsers = allUsers.filter(user => 
-        !users.some(enrolledUser => enrolledUser._id === user._id)
+        user && !users.some(enrolledUser => enrolledUser && enrolledUser._id === user._id)
     );
 
     useEffect(() => {

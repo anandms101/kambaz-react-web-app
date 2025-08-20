@@ -30,6 +30,10 @@ export default function Kambaz() {
 
   const findCoursesForUser = useCallback(async () => {
     try {
+      if (!currentUser || !currentUser._id) {
+        console.error("No current user found");
+        return;
+      }
       const userCourses = await userClient.findCoursesForUser(currentUser._id);
       setCourses(userCourses);
     } catch (error) {
@@ -39,13 +43,18 @@ export default function Kambaz() {
 
   const fetchAllCourses = useCallback(async () => {
     try {
+      if (!currentUser || !currentUser._id) {
+        console.error("No current user found");
+        return;
+      }
+      
       const allCourses = await courseClient.fetchAllCourses();
       const enrolledCourses = await userClient.findCoursesForUser(currentUser._id);
       
       // Mark courses as enrolled or not
       const coursesWithEnrollment = allCourses.map((course: any) => {
         const isEnrolled = enrolledCourses.some((enrolledCourse: any) => 
-          enrolledCourse._id === course._id
+          enrolledCourse && enrolledCourse._id === course._id
         );
         return { ...course, enrolled: isEnrolled };
       });

@@ -11,7 +11,7 @@ export default function AssignmentEditor() {
   const { aid, cid } = useParams();
 
   const { assignments } = useSelector((state: any) => state.assignmentReducer);
-  const currentAssignment = assignments.find((assignment: any) => assignment._id === aid);
+  const currentAssignment = assignments.find((assignment: any) => assignment && assignment._id === aid);
 
   // Get today's date and time at 11:11 PM
   const getDefaultDateTime = () => {
